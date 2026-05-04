@@ -33,7 +33,6 @@ body {
   cursor: none;
 }
 
-/* ── CURSOR ── */
 .cursor {
   position: fixed;
   width: 10px; height: 10px;
@@ -42,7 +41,7 @@ body {
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s, width 0.2s, height 0.2s;
+  transition: width 0.2s, height 0.2s;
   mix-blend-mode: difference;
 }
 .cursor-ring {
@@ -57,7 +56,6 @@ body {
   opacity: 0.5;
 }
 
-/* ── GRAIN ── */
 body::after {
   content: '';
   position: fixed;
@@ -68,23 +66,21 @@ body::after {
   opacity: 0.6;
 }
 
-/* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 28px 60px;
+  padding: 32px 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  mix-blend-mode: normal;
 }
 
 nav::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(6,6,6,0.95), transparent);
+  background: linear-gradient(to bottom, rgba(6,6,6,0.97), transparent);
   pointer-events: none;
 }
 
@@ -95,19 +91,17 @@ nav::before {
   color: var(--hueso);
   position: relative;
   text-decoration: none;
+  z-index: 1;
 }
-
-.nav-logo span {
-  color: var(--accent);
-}
+.nav-logo span { color: var(--accent); }
 
 .nav-links {
   display: flex;
   gap: 36px;
   list-style: none;
   position: relative;
+  z-index: 1;
 }
-
 .nav-links a {
   font-size: 10px;
   letter-spacing: 2px;
@@ -116,11 +110,11 @@ nav::before {
   text-decoration: none;
   transition: color 0.2s;
 }
-
 .nav-links a:hover { color: var(--accent); }
 
 .nav-cta {
   position: relative;
+  z-index: 1;
   padding: 9px 22px;
   border: 1px solid var(--borde-gold);
   font-size: 10px;
@@ -129,15 +123,9 @@ nav::before {
   color: var(--accent);
   text-decoration: none;
   transition: all 0.25s;
-  background: transparent;
 }
+.nav-cta:hover { background: var(--accent); color: var(--negro); }
 
-.nav-cta:hover {
-  background: var(--accent);
-  color: var(--negro);
-}
-
-/* ── HERO ── */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -148,7 +136,6 @@ nav::before {
   overflow: hidden;
 }
 
-/* Animated grid background */
 .hero-grid {
   position: absolute;
   inset: 0;
@@ -158,26 +145,20 @@ nav::before {
   background-size: 80px 80px;
   animation: gridMove 20s linear infinite;
 }
-
 @keyframes gridMove {
   0% { transform: translateY(0); }
   100% { transform: translateY(80px); }
 }
 
-/* Orb */
 .hero-orb {
   position: absolute;
   width: 700px; height: 700px;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center,
-    rgba(201,170,112,0.12) 0%,
-    rgba(201,170,112,0.04) 40%,
-    transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(201,170,112,0.12) 0%, rgba(201,170,112,0.04) 40%, transparent 70%);
   top: 50%; left: 60%;
   transform: translate(-50%, -50%);
   animation: orbPulse 6s ease-in-out infinite;
 }
-
 @keyframes orbPulse {
   0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
   50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
@@ -200,13 +181,7 @@ nav::before {
   opacity: 0;
   animation: fadeUp 0.8s ease 0.2s forwards;
 }
-
-.hero-eyebrow::before {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: var(--accent);
-}
+.hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--accent); }
 
 .hero-title {
   font-family: 'Bebas Neue', sans-serif;
@@ -217,7 +192,6 @@ nav::before {
   opacity: 0;
   animation: fadeUp 0.8s ease 0.4s forwards;
 }
-
 .hero-title em {
   font-family: 'Instrument Serif', serif;
   font-style: italic;
@@ -241,11 +215,7 @@ nav::before {
   color: var(--texto);
   max-width: 420px;
 }
-
-.hero-tagline strong {
-  color: var(--hueso);
-  font-weight: 400;
-}
+.hero-tagline strong { color: var(--hueso); font-weight: 400; }
 
 .hero-scroll {
   display: flex;
@@ -257,27 +227,22 @@ nav::before {
   text-transform: uppercase;
   color: var(--dim);
 }
-
 .hero-scroll-line {
-  width: 1px;
-  height: 60px;
+  width: 1px; height: 60px;
   background: linear-gradient(to bottom, var(--accent), transparent);
   animation: scrollLine 1.5s ease-in-out infinite;
 }
-
 @keyframes scrollLine {
   0% { transform: scaleY(0); transform-origin: top; }
   50% { transform: scaleY(1); transform-origin: top; }
   51% { transform: scaleY(1); transform-origin: bottom; }
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── MARQUEE ── */
 .marquee-section {
   border-top: 1px solid var(--borde);
   border-bottom: 1px solid var(--borde);
@@ -285,16 +250,13 @@ nav::before {
   overflow: hidden;
   background: var(--carbon);
 }
-
 .marquee-track {
   display: flex;
   gap: 60px;
   animation: marquee 25s linear infinite;
   white-space: nowrap;
 }
-
 .marquee-track:hover { animation-play-state: paused; }
-
 .marquee-item {
   font-size: 10px;
   letter-spacing: 3px;
@@ -305,21 +267,13 @@ nav::before {
   gap: 20px;
   flex-shrink: 0;
 }
-
-.marquee-item span {
-  color: var(--accent);
-  font-size: 14px;
-}
-
+.marquee-item span { color: var(--accent); font-size: 14px; }
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-/* ── SECTION BASE ── */
-section {
-  padding: 120px 60px;
-}
+section { padding: 120px 60px; }
 
 .section-label {
   font-size: 9px;
@@ -331,22 +285,13 @@ section {
   align-items: center;
   gap: 16px;
 }
+.section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--accent); opacity: 0.4; }
 
-.section-label::after {
-  content: '';
-  flex: 1;
-  max-width: 60px;
-  height: 1px;
-  background: var(--accent);
-  opacity: 0.4;
-}
-
-/* ── ABOUT ── */
-.about {
+.about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  align-items: center;
+  align-items: start;
 }
 
 .about-text h2 {
@@ -354,74 +299,38 @@ section {
   font-size: clamp(42px, 5vw, 72px);
   color: var(--hueso);
   line-height: 0.95;
-  letter-spacing: 0px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
+.about-text h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+.about-text p { font-size: 13px; line-height: 1.9; color: var(--texto); margin-bottom: 20px; }
+.about-text p strong { color: var(--hueso); font-weight: 400; }
 
-.about-text h2 em {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  color: var(--accent);
-}
+.about-right { display: flex; flex-direction: column; gap: 2px; }
 
-.about-text p {
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--texto);
-  margin-bottom: 16px;
-}
-
-.about-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-}
-
-.stat-card {
+.capability-card {
   background: var(--grafito);
   border: 1px solid var(--borde);
-  padding: 32px;
+  padding: 28px 32px;
+  transition: border-color 0.3s;
   position: relative;
   overflow: hidden;
-  transition: border-color 0.3s;
 }
-
-.stat-card::before {
+.capability-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(201,170,112,0.06), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
 }
+.capability-card:hover { border-color: var(--borde-gold); }
+.capability-card:hover::before { transform: scaleY(1); }
+.capability-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--hueso); margin-bottom: 8px; }
+.capability-desc { font-size: 11px; line-height: 1.7; color: var(--dim); }
 
-.stat-card:hover { border-color: var(--borde-gold); }
-.stat-card:hover::before { opacity: 1; }
-
-.stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 56px;
-  color: var(--hueso);
-  line-height: 1;
-  letter-spacing: -1px;
-}
-
-.stat-num span {
-  color: var(--accent);
-}
-
-.stat-label {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-top: 8px;
-}
-
-/* ── PRODUCTS ── */
-.products-section {
-  background: var(--carbon);
-}
+.products-section { background: var(--carbon); }
 
 .products-header {
   display: flex;
@@ -429,19 +338,15 @@ section {
   justify-content: space-between;
   margin-bottom: 60px;
 }
-
 .products-header h2 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(42px, 5vw, 80px);
   color: var(--hueso);
   line-height: 0.9;
 }
+.products-note { font-size: 11px; line-height: 1.7; color: var(--dim); max-width: 280px; text-align: right; }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-}
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 
 .product-card {
   background: var(--grafito);
@@ -452,9 +357,7 @@ section {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   text-decoration: none;
   display: block;
-  group: true;
 }
-
 .product-card::before {
   content: '';
   position: absolute;
@@ -465,79 +368,18 @@ section {
   transform-origin: left;
   transition: transform 0.4s ease;
 }
-
-.product-card:hover {
-  border-color: var(--borde-gold);
-  transform: translateY(-4px);
-}
-
-.product-card:hover::before {
-  transform: scaleX(1);
-}
-
-.product-tag {
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 24px;
-}
-
-.product-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  color: var(--hueso);
-  letter-spacing: 2px;
-  line-height: 1;
-  margin-bottom: 16px;
-}
-
-.product-desc {
-  font-size: 12px;
-  line-height: 1.8;
-  color: var(--texto);
-  margin-bottom: 32px;
-}
-
-.product-link {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: gap 0.2s;
-}
-
+.product-card:hover { border-color: var(--borde-gold); transform: translateY(-4px); }
+.product-card:hover::before { transform: scaleX(1); }
+.product-tag { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+.product-name { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--hueso); letter-spacing: 2px; line-height: 1; margin-bottom: 16px; }
+.product-desc { font-size: 12px; line-height: 1.8; color: var(--texto); margin-bottom: 32px; }
+.product-link { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; transition: gap 0.2s; }
 .product-card:hover .product-link { gap: 16px; }
+.product-link::after { content: '→'; }
+.product-number { position: absolute; top: 40px; right: 40px; font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: rgba(201,170,112,0.06); line-height: 1; transition: color 0.3s; }
+.product-card:hover .product-number { color: rgba(201,170,112,0.12); }
 
-.product-link::after {
-  content: '→';
-}
-
-.product-number {
-  position: absolute;
-  top: 40px; right: 40px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 80px;
-  color: rgba(201,170,112,0.06);
-  line-height: 1;
-  letter-spacing: -2px;
-  transition: color 0.3s;
-}
-
-.product-card:hover .product-number {
-  color: rgba(201,170,112,0.12);
-}
-
-/* ── CASES ── */
-.cases-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  margin-top: 60px;
-}
+.cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 60px; }
 
 .case-card {
   background: var(--grafito);
@@ -547,148 +389,32 @@ section {
   overflow: hidden;
   transition: border-color 0.3s;
 }
-
 .case-card:hover { border-color: var(--borde-gold); }
+.case-tag { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); margin-bottom: 20px; }
+.case-name { font-family: 'Instrument Serif', serif; font-size: 32px; color: var(--hueso); font-style: italic; margin-bottom: 16px; }
+.case-desc { font-size: 12px; line-height: 1.8; color: var(--texto); margin-bottom: 36px; }
+.case-metrics { display: flex; gap: 32px; }
+.case-metric-num { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--accent); line-height: 1; }
+.case-metric-label { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); margin-top: 4px; }
+.case-accent { position: absolute; top: 0; right: 0; width: 120px; height: 120px; background: radial-gradient(circle at top right, rgba(201,170,112,0.08), transparent 70%); }
 
-.case-tag {
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-bottom: 20px;
-}
-
-.case-name {
-  font-family: 'Instrument Serif', serif;
-  font-size: 32px;
-  color: var(--hueso);
-  font-style: italic;
-  margin-bottom: 12px;
-}
-
-.case-desc {
-  font-size: 12px;
-  line-height: 1.8;
-  color: var(--texto);
-  margin-bottom: 32px;
-}
-
-.case-metrics {
-  display: flex;
-  gap: 32px;
-}
-
-.case-metric-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
-  color: var(--accent);
-  line-height: 1;
-}
-
-.case-metric-label {
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-top: 4px;
-}
-
-.case-accent {
-  position: absolute;
-  top: 0; right: 0;
-  width: 120px; height: 120px;
-  background: radial-gradient(circle at top right, rgba(201,170,112,0.08), transparent 70%);
-}
-
-/* ── TECH ── */
-.tech-section {
-  background: var(--grafito);
-  padding: 80px 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-  border-top: 1px solid var(--borde);
-  border-bottom: 1px solid var(--borde);
-}
-
-.tech-label {
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--dim);
-  flex-shrink: 0;
-}
-
-.tech-list {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  flex: 1;
-  justify-content: center;
-}
-
-.tech-pill {
-  padding: 7px 16px;
-  border: 1px solid var(--borde);
-  font-size: 10px;
-  letter-spacing: 1px;
-  color: var(--dim);
-  border-radius: 2px;
-  transition: all 0.2s;
-}
-
-.tech-pill:hover {
-  border-color: var(--borde-gold);
-  color: var(--accent);
-}
-
-/* ── CTA ── */
 .cta-section {
   text-align: center;
   padding: 160px 60px;
   position: relative;
   overflow: hidden;
 }
-
 .cta-section::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center,
-    rgba(201,170,112,0.06) 0%,
-    transparent 65%);
+  background: radial-gradient(ellipse at center, rgba(201,170,112,0.06) 0%, transparent 65%);
 }
-
-.cta-eyebrow {
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 28px;
-}
-
-.cta-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(56px, 8vw, 120px);
-  color: var(--hueso);
-  line-height: 0.9;
-  margin-bottom: 48px;
-  position: relative;
-}
-
-.cta-title em {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  color: var(--accent);
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-}
+.cta-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; }
+.cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(56px, 8vw, 120px); color: var(--hueso); line-height: 0.9; margin-bottom: 28px; position: relative; }
+.cta-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+.cta-sub { font-size: 13px; line-height: 1.8; color: var(--texto); max-width: 480px; margin: 0 auto 48px; }
+.cta-buttons { display: flex; gap: 16px; justify-content: center; align-items: center; }
 
 .btn-primary {
   padding: 16px 40px;
@@ -702,11 +428,7 @@ section {
   transition: all 0.25s;
   font-weight: 500;
 }
-
-.btn-primary:hover {
-  background: var(--accent2);
-  transform: translateY(-2px);
-}
+.btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
 
 .btn-ghost {
   padding: 16px 40px;
@@ -719,13 +441,8 @@ section {
   text-decoration: none;
   transition: all 0.25s;
 }
+.btn-ghost:hover { background: rgba(201,170,112,0.06); transform: translateY(-2px); }
 
-.btn-ghost:hover {
-  background: rgba(201,170,112,0.06);
-  transform: translateY(-2px);
-}
-
-/* ── FOOTER ── */
 footer {
   background: var(--carbon);
   border-top: 1px solid var(--borde);
@@ -734,83 +451,47 @@ footer {
   align-items: center;
   justify-content: space-between;
 }
-
-.footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  letter-spacing: 4px;
-  color: var(--hueso);
-}
-
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 4px; color: var(--hueso); }
 .footer-logo span { color: var(--accent); }
-
-.footer-copy {
-  font-size: 10px;
-  letter-spacing: 1px;
-  color: var(--dim);
-}
-
-.footer-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-}
-
-.footer-links a {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--dim);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
+.footer-copy { font-size: 10px; letter-spacing: 1px; color: var(--dim); }
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--accent); }
 
-/* ── SCROLL REVEAL ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   nav, section, .hero { padding-left: 24px; padding-right: 24px; }
+  nav { padding-top: 24px; padding-bottom: 24px; }
   .hero-title { font-size: 64px; }
-  .about { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .products-grid { grid-template-columns: 1fr; }
   .cases-grid { grid-template-columns: 1fr; }
   .hero-sub { flex-direction: column; align-items: flex-start; }
-  .tech-section { flex-direction: column; text-align: center; padding: 60px 24px; }
   footer { flex-direction: column; gap: 24px; text-align: center; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
+  .products-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .products-note { text-align: left; }
+  .nav-links { display: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">LOOPLY<span>.</span></a>
   <ul class="nav-links">
+    <li><a href="#soluciones">Soluciones</a></li>
     <li><a href="#productos">Productos</a></li>
     <li><a href="#casos">Casos</a></li>
-    <li><a href="#nosotros">Nosotros</a></li>
   </ul>
   <a href="mailto:nico@looplystudios.io" class="nav-cta">Contactar</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-orb"></div>
@@ -824,8 +505,8 @@ footer {
     </h1>
     <div class="hero-sub">
       <p class="hero-tagline">
-        Diseñamos y desplegamos sistemas de inteligencia artificial que trabajan por ti.<br>
-        <strong>Agentes autónomos. Resultados reales.</strong>
+        Diseñamos y construimos sistemas a medida — software, automatización, agentes IA — para empresas que quieren escalar sin escalar su equipo.<br>
+        <strong>No herramientas genéricas. No plantillas. Soluciones que entienden tu negocio.</strong>
       </p>
       <div class="hero-scroll">
         <div class="hero-scroll-line"></div>
@@ -835,121 +516,117 @@ footer {
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <div class="marquee-item"><span>◆</span> Agentes IA</div>
-    <div class="marquee-item"><span>◆</span> Automatización</div>
+    <div class="marquee-item"><span>◆</span> Agentes IA a medida</div>
+    <div class="marquee-item"><span>◆</span> Automatización de procesos</div>
+    <div class="marquee-item"><span>◆</span> Software propio en Python</div>
+    <div class="marquee-item"><span>◆</span> Integraciones de sistemas</div>
     <div class="marquee-item"><span>◆</span> WhatsApp Intelligence</div>
-    <div class="marquee-item"><span>◆</span> CRM IA</div>
-    <div class="marquee-item"><span>◆</span> Nutrición Inteligente</div>
-    <div class="marquee-item"><span>◆</span> Secretario Ejecutivo IA</div>
-    <div class="marquee-item"><span>◆</span> Conversational AI</div>
-    <div class="marquee-item"><span>◆</span> Agentes IA</div>
-    <div class="marquee-item"><span>◆</span> Automatización</div>
+    <div class="marquee-item"><span>◆</span> MarTech Architecture</div>
+    <div class="marquee-item"><span>◆</span> CRM & Data pipelines</div>
+    <div class="marquee-item"><span>◆</span> Agentes IA a medida</div>
+    <div class="marquee-item"><span>◆</span> Automatización de procesos</div>
+    <div class="marquee-item"><span>◆</span> Software propio en Python</div>
+    <div class="marquee-item"><span>◆</span> Integraciones de sistemas</div>
     <div class="marquee-item"><span>◆</span> WhatsApp Intelligence</div>
-    <div class="marquee-item"><span>◆</span> CRM IA</div>
-    <div class="marquee-item"><span>◆</span> Nutrición Inteligente</div>
-    <div class="marquee-item"><span>◆</span> Secretario Ejecutivo IA</div>
-    <div class="marquee-item"><span>◆</span> Conversational AI</div>
+    <div class="marquee-item"><span>◆</span> MarTech Architecture</div>
+    <div class="marquee-item"><span>◆</span> CRM & Data pipelines</div>
   </div>
 </div>
 
-<!-- ABOUT -->
-<section id="nosotros">
-  <div class="section-label">Sobre Looplystudios</div>
-  <div class="about reveal">
+<section id="soluciones">
+  <div class="section-label">Qué hacemos</div>
+  <div class="about-grid reveal">
     <div class="about-text">
-      <h2>IA que<br><em>trabaja</em><br>mientras tú duermes</h2>
-      <p>Construimos sistemas de inteligencia artificial a medida para empresas que quieren escalar sin escalar su equipo. No plantillas. No demos. Producción real desde el día uno.</p>
-      <p>Nuestros agentes gestionan leads, responden clientes, analizan datos y toman decisiones — con el mismo criterio que tú, pero sin descanso.</p>
+      <h2>Conocemos el<br><em>negocio</em><br>antes de escribir<br>código</h2>
+      <p>La mayoría de las herramientas de IA son genéricas. Funcionan para todos y por eso no funcionan del todo bien para nadie. <strong>Partimos del problema real de tu empresa</strong> — cómo entra un lead, cómo trabaja tu equipo, qué cuellos de botella te frenan — y construimos la solución exacta.</p>
+      <p>No vendemos licencias. Construimos sistemas que se integran en tu operación: Python, APIs, agentes conversacionales, automatizaciones, scripts, dashboards. Lo que tu negocio necesita, no lo que es más fácil de vender.</p>
+      <p><strong>El resultado: más capacidad operativa sin más personas. Procesos que antes tardaban horas, ejecutándose solos.</strong></p>
     </div>
-    <div class="about-stats">
-      <div class="stat-card">
-        <div class="stat-num">10<span>€</span></div>
-        <div class="stat-label">Coste mensual de infraestructura</div>
+    <div class="about-right">
+      <div class="capability-card">
+        <div class="capability-title">Agentes IA conversacionales</div>
+        <div class="capability-desc">Agentes que cualifican leads, responden clientes y cierran ventas por WhatsApp — con el criterio de tu mejor comercial, disponibles siempre.</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num">24<span>/7</span></div>
-        <div class="stat-label">Agentes activos sin interrupción</div>
+      <div class="capability-card">
+        <div class="capability-title">Software a medida</div>
+        <div class="capability-desc">Plataformas propietarias en Python, Flask, PostgreSQL. Sistemas que resuelven problemas específicos de tu operación que ningún SaaS del mercado cubre.</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num">3<span>x</span></div>
-        <div class="stat-label">Sistemas en producción</div>
+      <div class="capability-card">
+        <div class="capability-title">Automatización de procesos</div>
+        <div class="capability-desc">Scripts, pipelines de datos, integraciones entre sistemas. Eliminamos el trabajo manual repetitivo y conectamos las herramientas que ya usas.</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num">0<span>€</span></div>
-        <div class="stat-label">Coste hasta tener usuarios reales</div>
+      <div class="capability-card">
+        <div class="capability-title">Arquitectura MarTech</div>
+        <div class="capability-desc">Diseño e implementación del stack de marketing: CRM, analytics, tracking, automatización de captación y nurturing end-to-end.</div>
+      </div>
+      <div class="capability-card">
+        <div class="capability-title">Secretarios y asistentes IA</div>
+        <div class="capability-desc">Agentes ejecutivos que gestionan email, calendario, tareas y reportes — conectados a tus herramientas reales, no a demos de laboratorio.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRODUCTS -->
 <section id="productos" class="products-section">
   <div class="products-header reveal">
     <div>
       <div class="section-label">Nuestros productos</div>
       <h2>SISTEMAS<br>QUE ESCALAN</h2>
     </div>
+    <div class="products-note">Herramientas propias construidas para resolver necesidades reales — disponibles para clientes.</div>
   </div>
   <div class="products-grid reveal">
-
     <a href="https://api.looplystudios.io" class="product-card" target="_blank">
       <div class="product-number">01</div>
-      <div class="product-tag">Agente Conversacional</div>
+      <div class="product-tag">Motor conversacional IA</div>
       <div class="product-name">CEREBRO</div>
-      <div class="product-desc">Motor multi-cliente de agentes conversacionales IA para WhatsApp. Cualifica leads, recomienda productos y cierra ventas — sin intervención humana.</div>
-      <div class="product-link">Probar demo</div>
+      <div class="product-desc">Sistema multi-cliente de agentes IA para WhatsApp. Cualifica leads, recomienda productos y lleva a la venta — configurado a medida de cada negocio, sin tocar una línea de código.</div>
+      <div class="product-link">Ver demo</div>
     </a>
-
     <div class="product-card">
       <div class="product-number">02</div>
-      <div class="product-tag">Secretario Ejecutivo IA</div>
+      <div class="product-tag">Secretario ejecutivo IA</div>
       <div class="product-name">MAX</div>
-      <div class="product-desc">Agente personal con acceso real a Gmail, Google Calendar y Sheets. Gestiona tu agenda, analiza emails y reagenda automáticamente lo que no hiciste.</div>
+      <div class="product-desc">Agente personal conectado a Gmail, Google Calendar y Sheets. Analiza emails, gestiona agenda, extrae tareas y las reagenda automáticamente — sin intervención manual.</div>
       <div class="product-link">Próximamente</div>
     </div>
-
     <div class="product-card">
       <div class="product-number">03</div>
-      <div class="product-tag">Coach Nutricional IA</div>
+      <div class="product-tag">Coach nutricional IA</div>
       <div class="product-name">VITA</div>
-      <div class="product-desc">Coach personal, nutricionista y chef en un bot de Telegram. Registra macros, controla el peso, propone recetas y ajusta tus objetivos semanalmente.</div>
+      <div class="product-desc">Coach personal, nutricionista y chef en un bot de Telegram. Registra macros, controla el peso, propone recetas y ajusta objetivos semanalmente según tu evolución real.</div>
       <div class="product-link">Próximamente</div>
     </div>
-
   </div>
 </section>
 
-<!-- CASES -->
 <section id="casos">
   <div class="section-label">Casos reales</div>
-  <h2 class="reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5vw,72px);color:var(--hueso);line-height:0.95;margin-bottom:0;">EN PRODUCCIÓN<br>DESDE EL DÍA UNO</h2>
+  <h2 class="reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5vw,72px);color:var(--hueso);line-height:0.95;margin-bottom:0;">PROBLEMAS REALES.<br><span style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);">Soluciones</span> A MEDIDA.</h2>
   <div class="cases-grid">
-
     <div class="case-card reveal">
       <div class="case-accent"></div>
       <div class="case-tag">Agencia de viajes — Madrid</div>
       <div class="case-name">Boutique Destinations</div>
-      <div class="case-desc">Sistema interno de gestión de leads en tiempo real durante llamadas. Integración con ManyChat, Tour32 y Ringover. Agente Oscar cualifica y dispara WhatsApp automático.</div>
+      <div class="case-desc">Transformación digital completa: plataforma propia en Python + ML para gestión de leads en tiempo real durante llamadas, integración con CRM Tour32, telefonía Ringover y agente IA para cualificación y WhatsApp automático.</div>
       <div class="case-metrics">
         <div>
-          <div class="case-metric-num">∞</div>
-          <div class="case-metric-label">Leads procesados</div>
+          <div class="case-metric-num">+40%</div>
+          <div class="case-metric-label">Crecimiento en ventas</div>
         </div>
         <div>
-          <div class="case-metric-num">24/7</div>
-          <div class="case-metric-label">Sistema activo</div>
+          <div class="case-metric-num">+40%</div>
+          <div class="case-metric-label">Productividad del equipo</div>
         </div>
       </div>
     </div>
-
     <div class="case-card reveal">
       <div class="case-accent"></div>
       <div class="case-tag">Academia online — LATAM</div>
       <div class="case-name">Microchips Academy</div>
-      <div class="case-desc">Agente Alex cualifica 1.179 leads de LATAM. Normalización automática de teléfonos, integración con Brevo y ManyChat. Sistema listo para campaña masiva de WhatsApp.</div>
+      <div class="case-desc">Sistema de cualificación de leads vía WhatsApp con agente Alex. Procesamiento y normalización automática de 1.179 leads LATAM, integración con ManyChat y campaña de reactivación masiva lista para ejecutar.</div>
       <div class="case-metrics">
         <div>
           <div class="case-metric-num">1.179</div>
@@ -961,40 +638,19 @@ footer {
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- TECH STACK -->
-<div class="tech-section">
-  <div class="tech-label">Stack tecnológico</div>
-  <div class="tech-list">
-    <div class="tech-pill">Claude API</div>
-    <div class="tech-pill">Python</div>
-    <div class="tech-pill">Flask</div>
-    <div class="tech-pill">Supabase</div>
-    <div class="tech-pill">ManyChat</div>
-    <div class="tech-pill">Telegram</div>
-    <div class="tech-pill">Hetzner</div>
-    <div class="tech-pill">Nginx</div>
-    <div class="tech-pill">Brevo</div>
-    <div class="tech-pill">Google APIs</div>
-    <div class="tech-pill">Next.js</div>
-    <div class="tech-pill">Vercel</div>
-  </div>
-</div>
-
-<!-- CTA -->
 <section class="cta-section">
-  <div class="cta-eyebrow">¿Listo para escalar?</div>
-  <h2 class="cta-title">TU NEGOCIO.<br><em>Nuestra</em><br>INTELIGENCIA.</h2>
+  <div class="cta-eyebrow">¿Tienes un problema concreto?</div>
+  <h2 class="cta-title">TU <em>negocio.</em><br>NUESTRA<br>INTELIGENCIA.</h2>
+  <p class="cta-sub">Cuéntanos qué proceso quieres automatizar, qué sistema necesitas o qué problema llevas tiempo sin resolver. Lo analizamos y te proponemos una solución a medida.</p>
   <div class="cta-buttons">
-    <a href="mailto:nico@looplystudios.io" class="btn-primary">Empezar ahora</a>
+    <a href="mailto:nico@looplystudios.io" class="btn-primary">Hablemos</a>
     <a href="https://api.looplystudios.io" class="btn-ghost" target="_blank">Ver CEREBRO</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">LOOPLY<span>.</span></div>
   <div class="footer-copy">© 2026 Looplystudios — Madrid</div>
@@ -1005,7 +661,6 @@ footer {
 </footer>
 
 <script>
-// ── CURSOR
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -1025,7 +680,7 @@ function animRing() {
 }
 animRing();
 
-document.querySelectorAll('a, button, .product-card, .case-card, .stat-card').forEach(el => {
+document.querySelectorAll('a, button, .product-card, .case-card, .capability-card').forEach(el => {
   el.addEventListener('mouseenter', () => {
     cursor.style.width = '20px';
     cursor.style.height = '20px';
@@ -1042,7 +697,6 @@ document.querySelectorAll('a, button, .product-card, .case-card, .stat-card').fo
   });
 });
 
-// ── SCROLL REVEAL
 const observer = new IntersectionObserver(entries => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
@@ -1053,7 +707,6 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── HERO PARALLAX
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
   document.querySelector('.hero-orb').style.transform = `translate(-50%, calc(-50% + ${y * 0.3}px))`;

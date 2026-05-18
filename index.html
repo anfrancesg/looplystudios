@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Looplystudios — We build the intelligence behind your business</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -15,6 +14,7 @@
   --carbon: #0e0e0e;
   --grafito: #161616;
   --hueso: #f2ede4;
+  --crema: #e4ddd0;
   --accent: #c9aa70;
   --accent2: #e8c97a;
   --texto: #c8c2b8;
@@ -24,85 +24,420 @@
 }
 
 html { scroll-behavior: smooth; }
-body { background: var(--negro); color: var(--texto); font-family: 'DM Mono', monospace; overflow-x: hidden; cursor: none; }
 
-.cursor { position: fixed; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; mix-blend-mode: difference; }
-.cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.15s ease-out; opacity: 0.5; }
+body {
+  background: var(--negro);
+  color: var(--texto);
+  font-family: 'DM Mono', monospace;
+  overflow-x: hidden;
+  cursor: none;
+}
 
-body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9997; opacity: 0.6; }
+.cursor {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease-out;
+  opacity: 0.5;
+}
 
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 32px 60px; display: flex; align-items: center; justify-content: space-between; }
-nav::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(6,6,6,0.97), transparent); pointer-events: none; }
-.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 4px; color: var(--hueso); position: relative; text-decoration: none; z-index: 1; }
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0.6;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 32px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(6,6,6,0.97), transparent);
+  pointer-events: none;
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 4px;
+  color: var(--hueso);
+  position: relative;
+  text-decoration: none;
+  z-index: 1;
+}
 .nav-logo span { color: var(--accent); }
-.nav-links { display: flex; gap: 36px; list-style: none; position: relative; z-index: 1; }
-.nav-links a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  position: relative;
+  z-index: 1;
+}
+.nav-links a {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
 .nav-links a:hover { color: var(--accent); }
-.nav-cta { position: relative; z-index: 1; padding: 9px 22px; border: 1px solid var(--borde-gold); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); text-decoration: none; transition: all 0.25s; cursor: pointer; background: transparent; font-family: 'DM Mono', monospace; }
+
+.nav-cta {
+  position: relative;
+  z-index: 1;
+  padding: 9px 22px;
+  border: 1px solid var(--borde-gold);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.25s;
+}
 .nav-cta:hover { background: var(--accent); color: var(--negro); }
 
-.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 60px 80px; position: relative; overflow: hidden; }
-.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,170,112,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,170,112,0.04) 1px, transparent 1px); background-size: 80px 80px; animation: gridMove 20s linear infinite; }
-@keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(80px); } }
-.hero-orb { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(201,170,112,0.12) 0%, rgba(201,170,112,0.04) 40%, transparent 70%); top: 50%; left: 60%; transform: translate(-50%, -50%); animation: orbPulse 6s ease-in-out infinite; }
-@keyframes orbPulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; } 50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; } }
-.hero-content { position: relative; max-width: 900px; }
-.hero-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
-.hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--accent); }
-.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 11vw, 160px); line-height: 0.88; color: var(--hueso); letter-spacing: -1px; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
-.hero-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-size: 0.85em; }
-.hero-sub { margin-top: 40px; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
-.hero-tagline { font-size: 13px; line-height: 1.8; color: var(--texto); max-width: 420px; }
-.hero-tagline strong { color: var(--hueso); font-weight: 400; }
-.hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); }
-.hero-scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollLine 1.5s ease-in-out infinite; }
-@keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 60px 80px;
+  position: relative;
+  overflow: hidden;
+}
 
-.marquee-section { border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); padding: 18px 0; overflow: hidden; background: var(--carbon); }
-.marquee-track { display: flex; gap: 60px; animation: marquee 25s linear infinite; white-space: nowrap; }
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,170,112,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,170,112,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridMove 20s linear infinite;
+}
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(80px); }
+}
+
+.hero-orb {
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(201,170,112,0.12) 0%, rgba(201,170,112,0.04) 40%, transparent 70%);
+  top: 50%; left: 60%;
+  transform: translate(-50%, -50%);
+  animation: orbPulse 6s ease-in-out infinite;
+}
+@keyframes orbPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
+
+.hero-content {
+  position: relative;
+  max-width: 900px;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+.hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--accent); }
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 11vw, 160px);
+  line-height: 0.88;
+  color: var(--hueso);
+  letter-spacing: -1px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+.hero-title em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-size: 0.85em;
+}
+
+.hero-sub {
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-tagline {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--texto);
+  max-width: 420px;
+}
+.hero-tagline strong { color: var(--hueso); font-weight: 400; }
+
+.hero-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.hero-scroll-line {
+  width: 1px; height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollLine 1.5s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.marquee-section {
+  border-top: 1px solid var(--borde);
+  border-bottom: 1px solid var(--borde);
+  padding: 18px 0;
+  overflow: hidden;
+  background: var(--carbon);
+}
+.marquee-track {
+  display: flex;
+  gap: 60px;
+  animation: marquee 25s linear infinite;
+  white-space: nowrap;
+}
 .marquee-track:hover { animation-play-state: paused; }
-.marquee-item { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+.marquee-item {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dim);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
 .marquee-item span { color: var(--accent); font-size: 14px; }
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
 section { padding: 120px 60px; }
-.section-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 60px; display: flex; align-items: center; gap: 16px; }
+
+.section-label {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--accent); opacity: 0.4; }
 
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.about-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 5vw, 72px); color: var(--hueso); line-height: 0.95; margin-bottom: 36px; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-text h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 5vw, 72px);
+  color: var(--hueso);
+  line-height: 0.95;
+  margin-bottom: 36px;
+}
 .about-text h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
 .about-text p { font-size: 13px; line-height: 1.9; color: var(--texto); margin-bottom: 20px; }
 .about-text p strong { color: var(--hueso); font-weight: 400; }
+
 .about-right { display: flex; flex-direction: column; gap: 2px; }
-.capability-card { background: var(--grafito); border: 1px solid var(--borde); padding: 28px 32px; transition: border-color 0.3s; position: relative; overflow: hidden; }
-.capability-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s ease; }
+
+.capability-card {
+  background: var(--grafito);
+  border: 1px solid var(--borde);
+  padding: 28px 32px;
+  transition: border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.capability-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
 .capability-card:hover { border-color: var(--borde-gold); }
 .capability-card:hover::before { transform: scaleY(1); }
 .capability-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--hueso); margin-bottom: 8px; }
 .capability-desc { font-size: 11px; line-height: 1.7; color: var(--dim); }
 
 .products-section { background: var(--carbon); }
-.products-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 60px; }
-.products-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 5vw, 80px); color: var(--hueso); line-height: 0.9; }
+
+.products-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+.products-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 5vw, 80px);
+  color: var(--hueso);
+  line-height: 0.9;
+}
 .products-note { font-size: 11px; line-height: 1.7; color: var(--dim); max-width: 280px; text-align: right; }
-.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-.product-card { background: var(--grafito); border: 1px solid var(--borde); padding: 48px 40px; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); text-decoration: none; display: block; }
-.product-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+
+/* Grid 2 columnas: CEREBRO grande a la izquierda, columna derecha con ATLAS + fila inferior MAX+VITA */
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2px;
+}
+
+.product-card {
+  background: var(--grafito);
+  border: 1px solid var(--borde);
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+  display: block;
+}
+.product-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
 .product-card:hover { border-color: var(--borde-gold); transform: translateY(-4px); }
 .product-card:hover::before { transform: scaleX(1); }
+
+/* CEREBRO ocupa las dos filas de la columna izquierda */
+.product-card--cerebro {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+/* ATLAS ocupa la primera fila de la columna derecha */
+.product-card--atlas {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* MAX y VITA van en la segunda fila, dividida en dos */
+.product-card--bottom {
+  grid-column: span 1;
+  grid-row: 2;
+}
+
+/* Subgrid para MAX y VITA dentro de la celda inferior derecha */
+.products-bottom-row {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
 .product-tag { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
 .product-name { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--hueso); letter-spacing: 2px; line-height: 1; margin-bottom: 16px; }
+.product-name--small { font-size: 36px; }
 .product-desc { font-size: 12px; line-height: 1.8; color: var(--texto); margin-bottom: 32px; }
+.product-desc--small { font-size: 11px; margin-bottom: 20px; }
 .product-link { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; transition: gap 0.2s; }
 .product-card:hover .product-link { gap: 16px; }
 .product-link::after { content: '→'; }
 .product-number { position: absolute; top: 40px; right: 40px; font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: rgba(201,170,112,0.06); line-height: 1; transition: color 0.3s; }
+.product-number--small { font-size: 52px; top: 24px; right: 24px; }
 .product-card:hover .product-number { color: rgba(201,170,112,0.12); }
 
+/* Badge NUEVO en ATLAS */
+.product-badge {
+  display: inline-block;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--negro);
+  background: var(--accent);
+  padding: 3px 10px;
+  margin-bottom: 16px;
+}
+
 .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 60px; }
-.case-card { background: var(--grafito); border: 1px solid var(--borde); padding: 52px 48px; position: relative; overflow: hidden; transition: border-color 0.3s; }
+
+.case-card {
+  background: var(--grafito);
+  border: 1px solid var(--borde);
+  padding: 52px 48px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
 .case-card:hover { border-color: var(--borde-gold); }
 .case-tag { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); margin-bottom: 20px; }
 .case-name { font-family: 'Instrument Serif', serif; font-size: 32px; color: var(--hueso); font-style: italic; margin-bottom: 16px; }
@@ -112,59 +447,79 @@ section { padding: 120px 60px; }
 .case-metric-label { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); margin-top: 4px; }
 .case-accent { position: absolute; top: 0; right: 0; width: 120px; height: 120px; background: radial-gradient(circle at top right, rgba(201,170,112,0.08), transparent 70%); }
 
-/* ── MODAL DE CONTACTO ── */
-.modal-overlay { position: fixed; inset: 0; background: rgba(6,6,6,0.92); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
-.modal-overlay.active { display: flex; }
-.modal { background: var(--carbon); border: 1px solid var(--borde-gold); padding: 56px 52px; width: 100%; max-width: 520px; position: relative; animation: fadeUp 0.3s ease forwards; }
-.modal-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--dim); font-size: 20px; cursor: pointer; line-height: 1; transition: color 0.2s; }
-.modal-close:hover { color: var(--hueso); }
-.modal-eyebrow { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-.modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: var(--hueso); line-height: 1; margin-bottom: 32px; letter-spacing: 1px; }
-.modal-field { margin-bottom: 16px; }
-.modal-field label { display: block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
-.modal-field input, .modal-field textarea { width: 100%; background: var(--grafito); border: 1px solid var(--borde); padding: 12px 16px; color: var(--hueso); font-family: 'DM Mono', monospace; font-size: 12px; outline: none; transition: border-color 0.2s; resize: none; }
-.modal-field input:focus, .modal-field textarea:focus { border-color: var(--borde-gold); }
-.modal-field input::placeholder, .modal-field textarea::placeholder { color: var(--dim); }
-.modal-submit { width: 100%; padding: 14px; background: var(--accent); color: var(--negro); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.25s; font-weight: 500; margin-top: 8px; }
-.modal-submit:hover { background: var(--accent2); }
-.modal-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-.modal-success { display: none; text-align: center; padding: 20px 0; }
-.modal-success-icon { font-size: 40px; margin-bottom: 16px; }
-.modal-success p { font-size: 12px; line-height: 1.8; color: var(--texto); }
-.modal-success strong { color: var(--hueso); }
-
-.cta-section { text-align: center; padding: 160px 60px; position: relative; overflow: hidden; }
-.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,170,112,0.06) 0%, transparent 65%); }
+.cta-section {
+  text-align: center;
+  padding: 160px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,170,112,0.06) 0%, transparent 65%);
+}
 .cta-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; }
 .cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(56px, 8vw, 120px); color: var(--hueso); line-height: 0.9; margin-bottom: 28px; position: relative; }
 .cta-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
 .cta-sub { font-size: 13px; line-height: 1.8; color: var(--texto); max-width: 480px; margin: 0 auto 48px; }
 .cta-buttons { display: flex; gap: 16px; justify-content: center; align-items: center; }
 
-.btn-primary { padding: 16px 40px; background: var(--accent); color: var(--negro); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.25s; font-weight: 500; border: none; cursor: pointer; }
+.btn-primary {
+  padding: 16px 40px;
+  background: var(--accent);
+  color: var(--negro);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s;
+  font-weight: 500;
+}
 .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
-.btn-ghost { padding: 16px 40px; border: 1px solid var(--borde-gold); color: var(--accent); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.25s; background: transparent; cursor: pointer; }
+
+.btn-ghost {
+  padding: 16px 40px;
+  border: 1px solid var(--borde-gold);
+  color: var(--accent);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s;
+}
 .btn-ghost:hover { background: rgba(201,170,112,0.06); transform: translateY(-2px); }
 
-footer { background: var(--carbon); border-top: 1px solid var(--borde); padding: 48px 60px; display: flex; align-items: center; justify-content: space-between; }
+footer {
+  background: var(--carbon);
+  border-top: 1px solid var(--borde);
+  padding: 48px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 4px; color: var(--hueso); }
 .footer-logo span { color: var(--accent); }
 .footer-copy { font-size: 10px; letter-spacing: 1px; color: var(--dim); }
 .footer-links { display: flex; gap: 28px; list-style: none; }
-.footer-links a, .footer-links button { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; background: none; border: none; cursor: pointer; font-family: 'DM Mono', monospace; }
-.footer-links a:hover, .footer-links button:hover { color: var(--accent); }
+.footer-links a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
 
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 900px) {
-  nav { padding: 20px 24px; }
   nav, section, .hero { padding-left: 24px; padding-right: 24px; }
-  .hero { padding-bottom: 60px; }
+  nav { padding-top: 20px; padding-bottom: 20px; }
+  .hero { padding-bottom: 60px; min-height: 100svh; }
   .hero-eyebrow { margin-bottom: 16px; }
   .hero-title { font-size: 64px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .products-grid { grid-template-columns: 1fr; }
+  .product-card--cerebro { grid-row: auto; }
+  .products-bottom-row { grid-template-columns: 1fr; }
   .cases-grid { grid-template-columns: 1fr; }
   .hero-sub { flex-direction: column; align-items: flex-start; }
   footer { flex-direction: column; gap: 24px; text-align: center; }
@@ -172,7 +527,6 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   .products-header { flex-direction: column; align-items: flex-start; gap: 16px; }
   .products-note { text-align: left; }
   .nav-links { display: none; }
-  .modal { padding: 40px 28px; margin: 24px; }
 }
 </style>
 </head>
@@ -181,35 +535,6 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- MODAL CONTACTO -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div id="modalForm">
-      <div class="modal-eyebrow">Contacto</div>
-      <div class="modal-title">HABLEMOS DE TU PROYECTO</div>
-      <div class="modal-field">
-        <label>Nombre</label>
-        <input type="text" id="contactName" placeholder="Tu nombre">
-      </div>
-      <div class="modal-field">
-        <label>Email</label>
-        <input type="email" id="contactEmail" placeholder="tu@empresa.com">
-      </div>
-      <div class="modal-field">
-        <label>Cuéntanos tu reto</label>
-        <textarea id="contactMessage" rows="4" placeholder="Qué proceso quieres automatizar, qué sistema necesitas..."></textarea>
-      </div>
-      <button class="modal-submit" id="modalSubmit" onclick="sendContact()">Enviar mensaje →</button>
-    </div>
-    <div class="modal-success" id="modalSuccess">
-      <div class="modal-success-icon">✦</div>
-      <p>Mensaje enviado correctamente.<br><strong>Te respondemos en menos de 24 horas.</strong></p>
-    </div>
-  </div>
-</div>
-
-<!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">LOOPLY<span>.</span></a>
   <ul class="nav-links">
@@ -217,10 +542,9 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
     <li><a href="#productos">Productos</a></li>
     <li><a href="#casos">Casos</a></li>
   </ul>
-  <button class="nav-cta" onclick="openModal()">Contactar</button>
+  <a href="mailto:nico@looplystudios.io" class="nav-cta">Contactar</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-orb"></div>
@@ -245,7 +569,6 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
     <div class="marquee-item"><span>◆</span> Agentes IA a medida</div>
@@ -265,7 +588,6 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   </div>
 </div>
 
-<!-- SOLUCIONES -->
 <section id="soluciones">
   <div class="section-label">Qué hacemos</div>
   <div class="about-grid reveal">
@@ -300,7 +622,6 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   </div>
 </section>
 
-<!-- PRODUCTOS -->
 <section id="productos" class="products-section">
   <div class="products-header reveal">
     <div>
@@ -309,32 +630,49 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
     </div>
     <div class="products-note">Herramientas propias construidas para resolver necesidades reales — disponibles para clientes.</div>
   </div>
+
   <div class="products-grid reveal">
-    <a href="https://api.looplystudios.io" class="product-card" target="_blank">
+
+    <!-- CEREBRO — columna izquierda, ocupa las dos filas -->
+    <a href="https://api.looplystudios.io" class="product-card product-card--cerebro" target="_blank">
       <div class="product-number">01</div>
       <div class="product-tag">Motor conversacional IA</div>
       <div class="product-name">CEREBRO</div>
-      <div class="product-desc">Sistema multi-cliente de agentes IA para WhatsApp. Cualifica leads, recomienda productos y lleva a la venta — configurado a medida de cada negocio.</div>
+      <div class="product-desc">Sistema multi-cliente de agentes IA para WhatsApp. Cualifica leads, recomienda productos y lleva a la venta — configurado a medida de cada negocio, sin tocar una línea de código.</div>
       <div class="product-link">Ver demo</div>
     </a>
-    <div class="product-card">
+
+    <!-- ATLAS — columna derecha, primera fila -->
+    <a href="atlas.html" class="product-card product-card--atlas">
       <div class="product-number">02</div>
-      <div class="product-tag">Secretario ejecutivo IA</div>
-      <div class="product-name">MAX</div>
-      <div class="product-desc">Agente personal conectado a Gmail, Google Calendar y Sheets. Analiza emails, gestiona agenda, extrae tareas y las reagenda automáticamente.</div>
-      <div class="product-link">Próximamente</div>
+      <div class="product-badge">Nuevo</div>
+      <div class="product-tag">Agente de paid media IA</div>
+      <div class="product-name">ATLAS</div>
+      <div class="product-desc">Analiza tus campañas de Google Ads, Meta Ads, GA4 y TikTok en tiempo real. Briefing diario, alertas instantáneas e informes semanales automáticos — sin trabajo manual de reporting.</div>
+      <div class="product-link">Descubrir ATLAS</div>
+    </a>
+
+    <!-- MAX y VITA — columna derecha, segunda fila, dividida en dos -->
+    <div class="products-bottom-row">
+      <div class="product-card">
+        <div class="product-number product-number--small">03</div>
+        <div class="product-tag">Secretario ejecutivo IA</div>
+        <div class="product-name product-name--small">MAX</div>
+        <div class="product-desc product-desc--small">Agente personal conectado a Gmail, Google Calendar y Sheets. Analiza emails, gestiona agenda, extrae tareas y las reagenda automáticamente.</div>
+        <div class="product-link">Próximamente</div>
+      </div>
+      <div class="product-card">
+        <div class="product-number product-number--small">04</div>
+        <div class="product-tag">Coach nutricional IA</div>
+        <div class="product-name product-name--small">VITA</div>
+        <div class="product-desc product-desc--small">Coach personal, nutricionista y chef en un bot de Telegram. Registra macros, controla el peso y ajusta objetivos según tu evolución real.</div>
+        <div class="product-link">Próximamente</div>
+      </div>
     </div>
-    <div class="product-card">
-      <div class="product-number">03</div>
-      <div class="product-tag">Coach nutricional IA</div>
-      <div class="product-name">VITA</div>
-      <div class="product-desc">Coach personal, nutricionista y chef en un bot de Telegram. Registra macros, controla el peso, propone recetas y ajusta objetivos semanalmente.</div>
-      <div class="product-link">Próximamente</div>
-    </div>
+
   </div>
 </section>
 
-<!-- CASOS -->
 <section id="casos">
   <div class="section-label">Casos reales</div>
   <h2 class="reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5vw,72px);color:var(--hueso);line-height:0.95;margin-bottom:0;">PROBLEMAS REALES.<br><span style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);">Soluciones</span> A MEDIDA.</h2>
@@ -359,7 +697,7 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
       <div class="case-accent"></div>
       <div class="case-tag">Academia online — LATAM</div>
       <div class="case-name">Microchips Academy</div>
-      <div class="case-desc">Arquitectura MarTech y sistema de cualificación de leads vía WhatsApp con agente Alex. Captación, procesamiento y normalización automática de leads procedentes de LATAM y España, integración con Brevo, ManyChat y CEREBRO.</div>
+      <div class="case-desc">Arquitectura Martech y sistema de cualificación de leads vía WhatsApp con agente Alex. Captación, procesamiento y normalización automática de leads procedentes de LATAM y España, integración con Brevo, ManyChat y CEREBRO.</div>
       <div class="case-metrics">
         <div>
           <div class="case-metric-num">1.179</div>
@@ -374,29 +712,27 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section">
   <div class="cta-eyebrow">¿Tienes un problema concreto?</div>
   <h2 class="cta-title">TU <em>negocio.</em><br>NUESTRA<br>INTELIGENCIA.</h2>
   <p class="cta-sub">Cuéntanos qué proceso quieres automatizar, qué sistema necesitas o qué problema llevas tiempo sin resolver. Lo analizamos y te proponemos una solución a medida.</p>
   <div class="cta-buttons">
-    <button class="btn-primary" onclick="openModal()">Hablemos</button>
+    <a href="mailto:nico@looplystudios.io" class="btn-primary">Hablemos</a>
     <a href="https://api.looplystudios.io" class="btn-ghost" target="_blank">Ver CEREBRO</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">LOOPLY<span>.</span></div>
   <div class="footer-copy">© 2026 Looplystudios — Madrid</div>
   <ul class="footer-links">
-    <li><button onclick="openModal()">Contacto</button></li>
+    <li><a href="mailto:nico@looplystudios.io">Email</a></li>
     <li><a href="https://api.looplystudios.io" target="_blank">CEREBRO</a></li>
+    <li><a href="atlas.html">ATLAS</a></li>
   </ul>
 </footer>
 
 <script>
-// ── CURSOR
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -418,87 +754,36 @@ animRing();
 
 document.querySelectorAll('a, button, .product-card, .case-card, .capability-card').forEach(el => {
   el.addEventListener('mouseenter', () => {
-    cursor.style.width = '20px'; cursor.style.height = '20px';
-    ring.style.width = '60px'; ring.style.height = '60px'; ring.style.opacity = '0.3';
+    cursor.style.width = '20px';
+    cursor.style.height = '20px';
+    ring.style.width = '60px';
+    ring.style.height = '60px';
+    ring.style.opacity = '0.3';
   });
   el.addEventListener('mouseleave', () => {
-    cursor.style.width = '10px'; cursor.style.height = '10px';
-    ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5';
+    cursor.style.width = '10px';
+    cursor.style.height = '10px';
+    ring.style.width = '36px';
+    ring.style.height = '36px';
+    ring.style.opacity = '0.5';
   });
 });
 
-// ── SCROLL REVEAL
 const observer = new IntersectionObserver(entries => {
   entries.forEach((entry, i) => {
-    if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
   });
 }, { threshold: 0.1 });
+
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── PARALLAX
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
   document.querySelector('.hero-orb').style.transform = `translate(-50%, calc(-50% + ${y * 0.3}px))`;
   document.querySelector('.hero-grid').style.opacity = 1 - y / 600;
 });
-
-// ── MODAL
-function openModal() {
-  document.getElementById('modalOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-document.getElementById('modalOverlay').addEventListener('click', e => {
-  if (e.target === document.getElementById('modalOverlay')) closeModal();
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
-
-// ── ENVIO DE CONTACTO via Formspree
-async function sendContact() {
-  const name = document.getElementById('contactName').value.trim();
-  const email = document.getElementById('contactEmail').value.trim();
-  const message = document.getElementById('contactMessage').value.trim();
-
-  if (!name || !email || !message) {
-    alert('Por favor rellena todos los campos.');
-    return;
-  }
-
-  const btn = document.getElementById('modalSubmit');
-  btn.disabled = true;
-  btn.textContent = 'Enviando...';
-
-  try {
-    const resp = await fetch('https://formspree.io/f/looplystudios', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, email, message, _replyto: email, _subject: `Nuevo contacto de ${name} — Looplystudios` })
-    });
-
-    if (resp.ok) {
-      document.getElementById('modalForm').style.display = 'none';
-      document.getElementById('modalSuccess').style.display = 'block';
-      setTimeout(closeModal, 4000);
-    } else {
-      throw new Error('Error en el envío');
-    }
-  } catch {
-    // Fallback: abrir cliente de email
-    window.location.href = `mailto:hola@looplystudios.io?subject=Contacto desde looplystudios.io&body=Nombre: ${name}%0AEmail: ${email}%0A%0A${message}`;
-    closeModal();
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Enviar mensaje →';
-  }
-}
 </script>
 </body>
 </html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ATLAS — Agente de Paid Media · Looplystudios</title>
+<meta name="description" content="ATLAS analiza tus campañas de Google Ads, Meta Ads, GA4 y TikTok. Briefing diario, alertas en tiempo real e informes semanales. Sin trabajo manual."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --negro: #060606; --carbon: #0e0e0e; --grafito: #161616;
+  --hueso: #f2ede4; --accent: #c9aa70; --accent2: #e8c97a;
+  --texto: #c8c2b8; --dim: #5a5550;
+  --borde: rgba(255,255,255,0.05); --borde-gold: rgba(201,170,112,0.25);
+}
+html { scroll-behavior: smooth; }
+body { background: var(--negro); color: var(--texto); font-family: 'DM Mono', monospace; overflow-x: hidden; cursor: none; }
+.cursor { position: fixed; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s; mix-blend-mode: difference; }
+.cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all .15s ease-out; opacity: .5; }
+body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9997; opacity: .6; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 32px 60px; display: flex; align-items: center; justify-content: space-between; }
+nav::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(6,6,6,0.97), transparent); pointer-events: none; }
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 4px; color: var(--hueso); text-decoration: none; position: relative; z-index: 1; }
+.nav-logo span { color: var(--accent); }
+.nav-back { position: relative; z-index: 1; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color .2s; }
+.nav-back:hover { color: var(--accent); }
+.nav-cta { position: relative; z-index: 1; padding: 9px 22px; border: 1px solid var(--borde-gold); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); text-decoration: none; transition: all .25s; }
+.nav-cta:hover { background: var(--accent); color: var(--negro); }
+
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 60px 80px; position: relative; overflow: hidden; }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,170,112,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,170,112,0.04) 1px, transparent 1px); background-size: 80px 80px; animation: gridMove 20s linear infinite; }
+@keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(80px); } }
+.hero-orb { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(201,170,112,0.12) 0%, rgba(201,170,112,0.04) 40%, transparent 70%); top: 50%; left: 65%; transform: translate(-50%,-50%); animation: orbPulse 6s ease-in-out infinite; }
+@keyframes orbPulse { 0%,100% { transform: translate(-50%,-50%) scale(1); opacity:.6; } 50% { transform: translate(-50%,-50%) scale(1.1); opacity:1; } }
+.hero-content { position: relative; max-width: 900px; }
+.hero-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; opacity: 0; animation: fadeUp .8s ease .2s forwards; }
+.hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--accent); }
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 11vw, 150px); line-height: .88; color: var(--hueso); letter-spacing: -1px; opacity: 0; animation: fadeUp .8s ease .4s forwards; }
+.hero-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-size: .85em; }
+.hero-sub { margin-top: 40px; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; opacity: 0; animation: fadeUp .8s ease .6s forwards; }
+.hero-tagline { font-size: 13px; line-height: 1.8; color: var(--texto); max-width: 440px; }
+.hero-tagline strong { color: var(--hueso); font-weight: 400; }
+.hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); }
+.hero-scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollLine 1.5s ease-in-out infinite; }
+@keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+.metrics-bar { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--borde-gold); border-left: 1px solid var(--borde-gold); background: var(--carbon); }
+.metric-item { padding: 40px 32px; border-right: 1px solid var(--borde-gold); border-bottom: 1px solid var(--borde-gold); }
+.metric-num { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+.metric-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); }
+
+section { padding: 120px 60px; }
+.section-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 60px; display: flex; align-items: center; gap: 16px; }
+.section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--accent); opacity: .4; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 80px); color: var(--hueso); line-height: .95; margin-bottom: 60px; }
+.section-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+
+.platforms-section { background: var(--carbon); }
+.platforms-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+.platform-card { background: var(--grafito); border: 1px solid var(--borde); padding: 40px 32px; transition: border-color .3s; position: relative; overflow: hidden; }
+.platform-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
+.platform-card:hover { border-color: var(--borde-gold); }
+.platform-card:hover::before { transform: scaleX(1); }
+.platform-icon { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); margin-bottom: 20px; }
+.platform-name { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--hueso); margin-bottom: 16px; }
+.platform-metrics { list-style: none; }
+.platform-metrics li { font-size: 11px; color: var(--dim); padding: 5px 0; border-bottom: 1px solid var(--borde); }
+.platform-metrics li:last-child { border: none; }
+.platform-metrics li::before { content: "→ "; color: var(--accent); }
+
+.outputs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.output-card { background: var(--grafito); border: 1px solid var(--borde); padding: 48px 40px; transition: border-color .3s; }
+.output-card:hover { border-color: var(--borde-gold); }
+.output-freq { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.output-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--hueso); line-height: 1; margin-bottom: 20px; }
+.output-desc { font-size: 12px; line-height: 1.9; color: var(--texto); }
+
+.arch-section { padding: 80px 60px; background: var(--carbon); }
+.arch-img { width: 100%; display: block; border: 1px solid var(--borde-gold); filter: brightness(.95); margin-top: 48px; }
+
+.steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 60px; }
+.step-num { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: rgba(201,170,112,0.1); line-height: 1; margin-bottom: 20px; }
+.step-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--hueso); margin-bottom: 16px; }
+.step-desc { font-size: 12px; line-height: 1.9; color: var(--dim); }
+
+.pricing-section { background: var(--carbon); }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.pricing-card { background: var(--grafito); border: 1px solid var(--borde); padding: 56px 48px; }
+.pricing-card.featured { border-color: var(--borde-gold); position: relative; overflow: hidden; }
+.pricing-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+.pricing-type { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.pricing-title { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--hueso); line-height: 1; margin-bottom: 12px; }
+.pricing-subtitle { font-size: 12px; color: var(--dim); margin-bottom: 40px; line-height: 1.8; }
+.pricing-features { list-style: none; }
+.pricing-features li { font-size: 12px; color: var(--texto); padding: 12px 0; border-bottom: 1px solid var(--borde); display: flex; gap: 14px; align-items: flex-start; }
+.pricing-features li:last-child { border: none; }
+.pricing-features li::before { content: "✓"; color: var(--accent); flex-shrink: 0; }
+.pricing-note { margin-top: 36px; font-size: 11px; color: var(--dim); line-height: 1.8; padding: 20px; border: 1px solid var(--borde); }
+
+.cta-section { text-align: center; padding: 160px 60px; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,170,112,0.06) 0%, transparent 65%); }
+.cta-bg-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Bebas Neue', sans-serif; font-size: 280px; color: rgba(201,170,112,0.025); white-space: nowrap; pointer-events: none; line-height: 1; }
+.cta-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; position: relative; }
+.cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 8vw, 110px); color: var(--hueso); line-height: .9; margin-bottom: 28px; position: relative; }
+.cta-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+.cta-sub { font-size: 13px; line-height: 1.8; color: var(--texto); max-width: 480px; margin: 0 auto 48px; position: relative; }
+.cta-buttons { display: flex; gap: 16px; justify-content: center; align-items: center; position: relative; }
+.btn-primary { padding: 16px 40px; background: var(--accent); color: var(--negro); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all .25s; font-weight: 500; display: inline-block; }
+.btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+.btn-ghost { padding: 16px 40px; border: 1px solid var(--borde-gold); color: var(--accent); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all .25s; }
+.btn-ghost:hover { background: rgba(201,170,112,0.06); transform: translateY(-2px); }
+
+footer { background: var(--carbon); border-top: 1px solid var(--borde); padding: 48px 60px; display: flex; align-items: center; justify-content: space-between; }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 4px; color: var(--hueso); }
+.footer-logo span { color: var(--accent); }
+.footer-copy { font-size: 10px; letter-spacing: 1px; color: var(--dim); }
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--accent); }
+
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav, section, .hero, .arch-section { padding-left: 24px; padding-right: 24px; }
+  nav { padding-top: 20px; padding-bottom: 20px; }
+  .hero { padding-bottom: 60px; }
+  .hero-title { font-size: 64px; }
+  .hero-sub { flex-direction: column; align-items: flex-start; }
+  .metrics-bar { grid-template-columns: repeat(2,1fr); }
+  .platforms-grid { grid-template-columns: repeat(2,1fr); }
+  .outputs-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; gap: 32px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="/" class="nav-logo">LOOPLY<span>.</span></a>
+  <a href="/" class="nav-back">← Volver</a>
+  <a href="mailto:nico@looplystudios.io?subject=Quiero saber más sobre ATLAS" class="nav-cta">Solicitar demo</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Producto · ATLAS · Agente de paid media</div>
+    <h1 class="hero-title">
+      TU PAID<br>
+      MEDIA, EN<br>
+      <em>piloto</em><br>
+      AUTOMÁTICO.
+    </h1>
+    <div class="hero-sub">
+      <p class="hero-tagline">
+        ATLAS analiza tus campañas de Google Ads, Meta Ads, GA4 y TikTok en tiempo real. Te manda un briefing cada mañana, te avisa cuando algo va mal y genera el informe semanal sin que toques nada.<br><br>
+        <strong>Cero horas de reporting manual. Cero campañas que se van de presupuesto sin que te enteres.</strong>
+      </p>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        Scroll
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="metrics-bar">
+  <div class="metric-item"><div class="metric-num">4</div><div class="metric-label">Plataformas conectadas</div></div>
+  <div class="metric-item"><div class="metric-num">24/7</div><div class="metric-label">Monitorización continua</div></div>
+  <div class="metric-item"><div class="metric-num">&lt;3s</div><div class="metric-label">Tiempo de alerta</div></div>
+  <div class="metric-item"><div class="metric-num">0h</div><div class="metric-label">Reporting manual</div></div>
+</div>
+
+<section class="platforms-section reveal">
+  <div class="section-label">Fuentes de datos</div>
+  <h2 class="section-title">CONECTADO A TODO<br>TU <em>ecosistema</em></h2>
+  <div class="platforms-grid">
+    <div class="platform-card">
+      <div class="platform-icon">G ADS</div>
+      <div class="platform-name">Google Ads</div>
+      <ul class="platform-metrics">
+        <li>Campañas y grupos de anuncios</li>
+        <li>Keywords y Quality Score</li>
+        <li>CPA, ROAS, conversiones</li>
+        <li>Impresiones y posición media</li>
+      </ul>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">META</div>
+      <div class="platform-name">Meta Ads (FB + IG)</div>
+      <ul class="platform-metrics">
+        <li>Campañas y conjuntos de anuncios</li>
+        <li>Audiencias y segmentación</li>
+        <li>CPM, CPC, frecuencia</li>
+        <li>Resultados y coste por resultado</li>
+      </ul>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">GA4</div>
+      <div class="platform-name">Google Analytics 4</div>
+      <ul class="platform-metrics">
+        <li>Conversiones y eventos</li>
+        <li>Tráfico por canal</li>
+        <li>ROAS real post-click</li>
+        <li>Embudos y rutas de conversión</li>
+      </ul>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">TKTK</div>
+      <div class="platform-name">TikTok Ads</div>
+      <ul class="platform-metrics">
+        <li>Campañas de vídeo</li>
+        <li>CPM, CTR, reproducciones</li>
+        <li>Audiencias y creatividades</li>
+        <li>Coste por conversión</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-label">Lo que hace ATLAS</div>
+  <h2 class="section-title">TRES OUTPUTS.<br>CERO <em>trabajo.</em></h2>
+  <div class="outputs-grid">
+    <div class="output-card">
+      <div class="output-freq">Cada mañana · 09:00</div>
+      <div class="output-title">BRIEFING DIARIO</div>
+      <div class="output-desc">Resumen de todas tus plataformas. Gasto del día anterior, métricas clave, qué campaña está funcionando y cuál está quemando presupuesto. Directo a Telegram o email antes de que empieces a trabajar.</div>
+    </div>
+    <div class="output-card">
+      <div class="output-freq">Cada lunes · Informe completo</div>
+      <div class="output-title">INFORME SEMANAL</div>
+      <div class="output-desc">PDF consolidado con rendimiento por plataforma, evolución de métricas, comparativa semana anterior y recomendaciones concretas de optimización. Listo para enviar al cliente sin tocar nada.</div>
+    </div>
+    <div class="output-card">
+      <div class="output-freq">En tiempo real · 24/7</div>
+      <div class="output-title">ALERTAS INTELIGENTES</div>
+      <div class="output-desc">ATLAS detecta anomalías antes que tú: gasto disparado, ROAS por debajo del umbral, campaña pausada por error, CPM triplicado. Notificación instantánea para actuar antes de que el problema escale.</div>
+    </div>
+  </div>
+</section>
+
+<div class="arch-section reveal">
+  <div class="section-label">Arquitectura del sistema</div>
+  <h2 class="section-title">DISEÑADO PARA<br><em>escalar</em></h2>
+  <img class="arch-img" src="ATLAS_arquitectura_watermark.jpg" alt="Arquitectura del agente ATLAS — Looplystudios"/>
+</div>
+
+<section class="reveal">
+  <div class="section-label">Implementación</div>
+  <h2 class="section-title">EN MARCHA EN<br><em>72 horas</em></h2>
+  <div class="steps-grid">
+    <div>
+      <div class="step-num">01</div>
+      <div class="step-title">Conexión de APIs</div>
+      <div class="step-desc">Conectamos ATLAS a tus cuentas de Google Ads, Meta Ads, GA4 y TikTok. Solo permisos de lectura via OAuth — sin acceso a contraseñas ni configuraciones de campaña.</div>
+    </div>
+    <div>
+      <div class="step-num">02</div>
+      <div class="step-title">Configuración de umbrales</div>
+      <div class="step-desc">Definimos juntos tus KPIs objetivo: ROAS mínimo, CPA máximo, presupuesto diario por campaña. ATLAS detecta cuándo algo se desvía y dispara alertas en tiempo real.</div>
+    </div>
+    <div>
+      <div class="step-num">03</div>
+      <div class="step-title">Entrega y acceso</div>
+      <div class="step-desc">Activas el canal que prefieras: briefing por Telegram, informe semanal por email o panel web con acceso 24/7. ATLAS corre en servidor propio — sin interrupciones, sin mantenimiento por tu parte.</div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section reveal">
+  <div class="section-label">Precios</div>
+  <h2 class="section-title">SIMPLE.<br><em>Predecible.</em></h2>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-type">Setup inicial · Pago único</div>
+      <div class="pricing-title">CONFIGURACIÓN</div>
+      <div class="pricing-subtitle">Todo lo necesario para que ATLAS esté operativo desde el primer día. El precio varía según el número de plataformas y la complejidad de la integración.</div>
+      <ul class="pricing-features">
+        <li>Conexión de plataformas publicitarias</li>
+        <li>Configuración de KPIs y umbrales</li>
+        <li>Panel web personalizado</li>
+        <li>Integración Telegram o email</li>
+        <li>Onboarding y documentación</li>
+      </ul>
+      <div class="pricing-note">Precio bajo consulta según número de plataformas y necesidades específicas.</div>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-type">Fee mensual · Sin permanencia</div>
+      <div class="pricing-title">SERVICIO CONTINUO</div>
+      <div class="pricing-subtitle">ATLAS funcionando 24/7, con todas las actualizaciones incluidas. La mensualidad depende de la complejidad del agente y el volumen de datos procesados.</div>
+      <ul class="pricing-features">
+        <li>Briefing diario automático</li>
+        <li>Informe semanal PDF</li>
+        <li>Alertas en tiempo real 24/7</li>
+        <li>Mantenimiento y actualizaciones</li>
+        <li>Soporte directo por Telegram</li>
+        <li>Ajuste de umbrales y KPIs</li>
+      </ul>
+      <div class="pricing-note">Precio bajo consulta. Sin permanencia — cancelas cuando quieras.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-bg-text">ATLAS</div>
+  <div class="cta-eyebrow">¿Listo para activarlo?</div>
+  <h2 class="cta-title">TU PAID MEDIA<br>NO DUERME.<br><em>ATLAS tampoco.</em></h2>
+  <p class="cta-sub">Cuéntanos qué plataformas usas y en menos de 24 horas te preparamos una propuesta con datos reales de tu cuenta.</p>
+  <div class="cta-buttons">
+    <a href="mailto:nico@looplystudios.io?subject=Quiero saber más sobre ATLAS" class="btn-primary">Hablar con Looplystudios</a>
+    <a href="/" class="btn-ghost">Ver más productos</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">LOOPLY<span>.</span></div>
+  <div class="footer-copy">© 2026 Looplystudios — Madrid</div>
+  <ul class="footer-links">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="mailto:nico@looplystudios.io">Email</a></li>
+    <li><a href="https://api.looplystudios.io" target="_blank">CEREBRO</a></li>
+  </ul>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+animRing();
+document.querySelectorAll('a,button,.platform-card,.output-card,.pricing-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';ring.style.width='60px';ring.style.height='60px';ring.style.opacity='.3';});
+  el.addEventListener('mouseleave',()=>{cursor.style.width='10px';cursor.style.height='10px';ring.style.width='36px';ring.style.height='36px';ring.style.opacity='.5';});
+});
+const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*80);});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  document.querySelector('.hero-orb').style.transform=`translate(-50%, calc(-50% + ${y*.3}px))`;
+  document.querySelector('.hero-grid').style.opacity=1-y/600;
+});
+</script>
+</body>
+</html>

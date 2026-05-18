@@ -79,15 +79,12 @@ section { padding: 120px 60px; }
 .output-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--hueso); line-height: 1; margin-bottom: 20px; }
 .output-desc { font-size: 12px; line-height: 1.9; color: var(--texto); }
 
-.arch-section { padding: 80px 60px; background: var(--carbon); }
-.arch-img { width: 100%; display: block; border: 1px solid var(--borde-gold); filter: brightness(.95); margin-top: 48px; }
+/* DIAGRAMA */
+.arch-section { padding: 120px 60px; background: var(--carbon); }
+.arch-diagram { width: 100%; margin-top: 48px; overflow: hidden; border: 1px solid var(--borde-gold); }
+.arch-diagram svg { display: block; width: 100%; height: auto; }
 
-.steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 60px; }
-.step-num { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: rgba(201,170,112,0.1); line-height: 1; margin-bottom: 20px; }
-.step-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--hueso); margin-bottom: 16px; }
-.step-desc { font-size: 12px; line-height: 1.9; color: var(--dim); }
-
-.pricing-section { background: var(--carbon); }
+.pricing-section { background: var(--negro); }
 .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
 .pricing-card { background: var(--grafito); border: 1px solid var(--borde); padding: 56px 48px; }
 .pricing-card.featured { border-color: var(--borde-gold); position: relative; overflow: hidden; }
@@ -134,7 +131,6 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   .metrics-bar { grid-template-columns: repeat(2,1fr); }
   .platforms-grid { grid-template-columns: repeat(2,1fr); }
   .outputs-grid { grid-template-columns: 1fr; }
-  .steps-grid { grid-template-columns: 1fr; gap: 32px; }
   .pricing-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; gap: 24px; text-align: center; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -152,6 +148,7 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   <a href="mailto:nico@looplystudios.io?subject=Quiero saber más sobre ATLAS" class="nav-cta">Solicitar demo</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-orb"></div>
@@ -176,6 +173,7 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   </div>
 </section>
 
+<!-- MÉTRICAS -->
 <div class="metrics-bar">
   <div class="metric-item"><div class="metric-num">4</div><div class="metric-label">Plataformas conectadas</div></div>
   <div class="metric-item"><div class="metric-num">24/7</div><div class="metric-label">Monitorización continua</div></div>
@@ -183,6 +181,7 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   <div class="metric-item"><div class="metric-num">0h</div><div class="metric-label">Reporting manual</div></div>
 </div>
 
+<!-- PLATAFORMAS -->
 <section class="platforms-section reveal">
   <div class="section-label">Fuentes de datos</div>
   <h2 class="section-title">CONECTADO A TODO<br>TU <em>ecosistema</em></h2>
@@ -230,6 +229,7 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   </div>
 </section>
 
+<!-- OUTPUTS -->
 <section class="reveal">
   <div class="section-label">Lo que hace ATLAS</div>
   <h2 class="section-title">TRES OUTPUTS.<br>CERO <em>trabajo.</em></h2>
@@ -252,34 +252,132 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   </div>
 </section>
 
+<!-- ARQUITECTURA SVG -->
 <div class="arch-section reveal">
   <div class="section-label">Arquitectura del sistema</div>
   <h2 class="section-title">DISEÑADO PARA<br><em>escalar</em></h2>
-  <img class="arch-img" src="ATLAS_arquitectura_watermark.jpg" alt="Arquitectura del agente ATLAS — Looplystudios"/>
+  <div class="arch-diagram">
+    <svg viewBox="0 0 1000 680" xmlns="http://www.w3.org/2000/svg" style="background:#0e0e0e;">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="#c9aa70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+
+      <!-- ETIQUETA CAPA 1 -->
+      <text x="50" y="56" font-family="'DM Mono', monospace" font-size="9" letter-spacing="3" fill="#5a5550" text-anchor="start">FUENTES DE DATOS</text>
+      <line x1="50" y1="62" x2="950" y2="62" stroke="rgba(201,170,112,0.1)" stroke-width="1"/>
+
+      <!-- GOOGLE ADS -->
+      <rect x="50" y="76" width="190" height="72" fill="#161616" stroke="rgba(201,170,112,0.25)" stroke-width="1"/>
+      <text x="70" y="100" font-family="'Bebas Neue', sans-serif" font-size="18" fill="#c9aa70" letter-spacing="2">GOOGLE ADS</text>
+      <text x="70" y="118" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550">Campañas · Keywords</text>
+      <text x="70" y="134" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550">CPA · ROAS · CTR</text>
+
+      <!-- META ADS -->
+      <rect x="270" y="76" width="190" height="72" fill="#161616" stroke="rgba(201,170,112,0.25)" stroke-width="1"/>
+      <text x="290" y="100" font-family="'Bebas Neue', sans-serif" font-size="18" fill="#c9aa70" letter-spacing="2">META ADS</text>
+      <text x="290" y="118" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550">FB + IG · Audiencias</text>
+      <text x="290" y="134" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550">CPM · CPC · Frecuencia</text>
+
+      <!-- GA4 -->
+      <rect x="490" y="76" width="190" height="72" fill="#161616" stroke="rgba(201,170,112,0.25)" stroke-width="1"/>
+      <text x="510" y="100" font-family="'Bebas Neue', sans-serif" font-size="18" fill="#c9aa70" letter-spacing="2">GA4</text>
+      <text x="510" y="118" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550">Conversiones · Tráfico</text>
+      <text x="510" y="134" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550">ROAS real post-click</text>
+
+      <!-- TIKTOK -->
+      <rect x="710" y="76" width="240" height="72" fill="#161616" stroke="rgba(201,170,112,0.25)" stroke-width="1"/>
+      <text x="730" y="100" font-family="'Bebas Neue', sans-serif" font-size="18" fill="#c9aa70" letter-spacing="2">TIKTOK ADS</text>
+      <text x="730" y="118" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550">Vídeo · CPM · CTR</text>
+      <text x="730" y="134" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550">Audiencias · Creatividades</text>
+
+      <!-- FLECHAS HACIA NÚCLEO -->
+      <line x1="145" y1="148" x2="340" y2="230" stroke="#c9aa70" stroke-width="1" stroke-opacity="0.4" marker-end="url(#arr)"/>
+      <line x1="365" y1="148" x2="400" y2="230" stroke="#c9aa70" stroke-width="1" stroke-opacity="0.4" marker-end="url(#arr)"/>
+      <line x1="585" y1="148" x2="560" y2="230" stroke="#c9aa70" stroke-width="1" stroke-opacity="0.4" marker-end="url(#arr)"/>
+      <line x1="830" y1="148" x2="620" y2="230" stroke="#c9aa70" stroke-width="1" stroke-opacity="0.4" marker-end="url(#arr)"/>
+
+      <!-- ETIQUETA CAPA 2 -->
+      <text x="50" y="222" font-family="'DM Mono', monospace" font-size="9" letter-spacing="3" fill="#5a5550">NÚCLEO IA</text>
+      <line x1="50" y1="228" x2="950" y2="228" stroke="rgba(201,170,112,0.1)" stroke-width="1"/>
+
+      <!-- NÚCLEO ATLAS — caja grande -->
+      <rect x="50" y="240" width="900" height="140" fill="rgba(201,170,112,0.03)" stroke="rgba(201,170,112,0.35)" stroke-width="1"/>
+      <!-- Línea acento top -->
+      <line x1="50" y1="240" x2="950" y2="240" stroke="#c9aa70" stroke-width="2"/>
+      <text x="500" y="268" font-family="'Bebas Neue', sans-serif" font-size="22" fill="#f2ede4" letter-spacing="4" text-anchor="middle">ATLAS — NÚCLEO IA (CLAUDE SONNET)</text>
+
+      <!-- Sub-módulos dentro del núcleo -->
+      <rect x="80" y="284" width="240" height="76" fill="#161616" stroke="rgba(201,170,112,0.2)" stroke-width="1"/>
+      <text x="200" y="308" font-family="'Bebas Neue', sans-serif" font-size="15" fill="#c9aa70" letter-spacing="2" text-anchor="middle">ANÁLISIS</text>
+      <text x="200" y="326" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550" text-anchor="middle">ROAS · CPA · CTR · Tendencias</text>
+      <text x="200" y="344" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550" text-anchor="middle">Comparativa semana anterior</text>
+
+      <rect x="380" y="284" width="240" height="76" fill="#161616" stroke="rgba(201,170,112,0.2)" stroke-width="1"/>
+      <text x="500" y="308" font-family="'Bebas Neue', sans-serif" font-size="15" fill="#c9aa70" letter-spacing="2" text-anchor="middle">ALERTAS</text>
+      <text x="500" y="326" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550" text-anchor="middle">Anomalías en tiempo real</text>
+      <text x="500" y="344" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550" text-anchor="middle">Umbrales configurables</text>
+
+      <rect x="680" y="284" width="240" height="76" fill="#161616" stroke="rgba(201,170,112,0.2)" stroke-width="1"/>
+      <text x="800" y="308" font-family="'Bebas Neue', sans-serif" font-size="15" fill="#c9aa70" letter-spacing="2" text-anchor="middle">RECOMENDACIONES</text>
+      <text x="800" y="326" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550" text-anchor="middle">Presupuesto · Creatividades</text>
+      <text x="800" y="344" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550" text-anchor="middle">Optimización de puja</text>
+
+      <!-- FLECHAS NÚCLEO → OUTPUTS -->
+      <line x1="280" y1="380" x2="200" y2="460" stroke="#c9aa70" stroke-width="1" stroke-opacity="0.4" marker-end="url(#arr)"/>
+      <line x1="500" y1="380" x2="500" y2="460" stroke="#c9aa70" stroke-width="1" stroke-opacity="0.4" marker-end="url(#arr)"/>
+      <line x1="720" y1="380" x2="800" y2="460" stroke="#c9aa70" stroke-width="1" stroke-opacity="0.4" marker-end="url(#arr)"/>
+
+      <!-- ETIQUETA CAPA 3 -->
+      <text x="50" y="452" font-family="'DM Mono', monospace" font-size="9" letter-spacing="3" fill="#5a5550">OUTPUTS · ENTREGA AL CLIENTE</text>
+      <line x1="50" y1="458" x2="950" y2="458" stroke="rgba(201,170,112,0.1)" stroke-width="1"/>
+
+      <!-- BRIEFING DIARIO -->
+      <rect x="50" y="468" width="280" height="76" fill="#161616" stroke="rgba(201,170,112,0.25)" stroke-width="1"/>
+      <text x="190" y="492" font-family="'Bebas Neue', sans-serif" font-size="16" fill="#f2ede4" letter-spacing="2" text-anchor="middle">BRIEFING DIARIO</text>
+      <text x="190" y="510" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550" text-anchor="middle">Cada mañana · Telegram / Email</text>
+      <text x="190" y="528" font-family="'DM Mono', monospace" font-size="10" fill="#c9aa70" text-anchor="middle">09:00 — automático</text>
+
+      <!-- INFORME SEMANAL -->
+      <rect x="360" y="468" width="280" height="76" fill="#161616" stroke="rgba(201,170,112,0.25)" stroke-width="1"/>
+      <text x="500" y="492" font-family="'Bebas Neue', sans-serif" font-size="16" fill="#f2ede4" letter-spacing="2" text-anchor="middle">INFORME SEMANAL</text>
+      <text x="500" y="510" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550" text-anchor="middle">PDF consolidado · Email</text>
+      <text x="500" y="528" font-family="'DM Mono', monospace" font-size="10" fill="#c9aa70" text-anchor="middle">Lunes — automático</text>
+
+      <!-- ALERTAS -->
+      <rect x="670" y="468" width="280" height="76" fill="#161616" stroke="rgba(201,170,112,0.25)" stroke-width="1"/>
+      <text x="810" y="492" font-family="'Bebas Neue', sans-serif" font-size="16" fill="#f2ede4" letter-spacing="2" text-anchor="middle">ALERTAS 24/7</text>
+      <text x="810" y="510" font-family="'DM Mono', monospace" font-size="10" fill="#5a5550" text-anchor="middle">Tiempo real · Telegram</text>
+      <text x="810" y="528" font-family="'DM Mono', monospace" font-size="10" fill="#c9aa70" text-anchor="middle">&lt;3s — instantáneo</text>
+
+      <!-- INFRAESTRUCTURA -->
+      <text x="50" y="574" font-family="'DM Mono', monospace" font-size="9" letter-spacing="3" fill="#5a5550">INFRAESTRUCTURA</text>
+      <line x1="50" y1="580" x2="950" y2="580" stroke="rgba(201,170,112,0.1)" stroke-width="1"/>
+      <rect x="50" y="590" width="900" height="52" fill="rgba(201,170,112,0.02)" stroke="rgba(201,170,112,0.12)" stroke-width="1"/>
+
+      <text x="160" y="612" font-family="'Bebas Neue', sans-serif" font-size="13" fill="#5a5550" letter-spacing="2" text-anchor="middle">HETZNER</text>
+      <text x="160" y="628" font-family="'DM Mono', monospace" font-size="9" fill="#3d3a36" text-anchor="middle">Servidor 24/7</text>
+      <line x1="270" y1="590" x2="270" y2="642" stroke="rgba(201,170,112,0.08)" stroke-width="1"/>
+
+      <text x="385" y="612" font-family="'Bebas Neue', sans-serif" font-size="13" fill="#5a5550" letter-spacing="2" text-anchor="middle">SUPABASE</text>
+      <text x="385" y="628" font-family="'DM Mono', monospace" font-size="9" fill="#3d3a36" text-anchor="middle">Historial · Datos</text>
+      <line x1="490" y1="590" x2="490" y2="642" stroke="rgba(201,170,112,0.08)" stroke-width="1"/>
+
+      <text x="610" y="612" font-family="'Bebas Neue', sans-serif" font-size="13" fill="#5a5550" letter-spacing="2" text-anchor="middle">GOOGLE APIS</text>
+      <text x="610" y="628" font-family="'DM Mono', monospace" font-size="9" fill="#3d3a36" text-anchor="middle">OAuth · Lectura</text>
+      <line x1="720" y1="590" x2="720" y2="642" stroke="rgba(201,170,112,0.08)" stroke-width="1"/>
+
+      <text x="835" y="612" font-family="'Bebas Neue', sans-serif" font-size="13" fill="#5a5550" letter-spacing="2" text-anchor="middle">CLAUDE API</text>
+      <text x="835" y="628" font-family="'DM Mono', monospace" font-size="9" fill="#3d3a36" text-anchor="middle">Sonnet · Análisis IA</text>
+
+      <!-- WATERMARK -->
+      <text x="500" y="660" font-family="'DM Mono', monospace" font-size="9" fill="rgba(201,170,112,0.2)" letter-spacing="4" text-anchor="middle">LOOPLYSTUDIOS.IO</text>
+    </svg>
+  </div>
 </div>
 
-<section class="reveal">
-  <div class="section-label">Implementación</div>
-  <h2 class="section-title">EN MARCHA EN<br><em>72 horas</em></h2>
-  <div class="steps-grid">
-    <div>
-      <div class="step-num">01</div>
-      <div class="step-title">Conexión de APIs</div>
-      <div class="step-desc">Conectamos ATLAS a tus cuentas de Google Ads, Meta Ads, GA4 y TikTok. Solo permisos de lectura via OAuth — sin acceso a contraseñas ni configuraciones de campaña.</div>
-    </div>
-    <div>
-      <div class="step-num">02</div>
-      <div class="step-title">Configuración de umbrales</div>
-      <div class="step-desc">Definimos juntos tus KPIs objetivo: ROAS mínimo, CPA máximo, presupuesto diario por campaña. ATLAS detecta cuándo algo se desvía y dispara alertas en tiempo real.</div>
-    </div>
-    <div>
-      <div class="step-num">03</div>
-      <div class="step-title">Entrega y acceso</div>
-      <div class="step-desc">Activas el canal que prefieras: briefing por Telegram, informe semanal por email o panel web con acceso 24/7. ATLAS corre en servidor propio — sin interrupciones, sin mantenimiento por tu parte.</div>
-    </div>
-  </div>
-</section>
-
+<!-- PRICING -->
 <section class="pricing-section reveal">
   <div class="section-label">Precios</div>
   <h2 class="section-title">SIMPLE.<br><em>Predecible.</em></h2>
@@ -287,7 +385,7 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
     <div class="pricing-card">
       <div class="pricing-type">Setup inicial · Pago único</div>
       <div class="pricing-title">CONFIGURACIÓN</div>
-      <div class="pricing-subtitle">Todo lo necesario para que ATLAS esté operativo desde el primer día. El precio varía según el número de plataformas y la complejidad de la integración.</div>
+      <div class="pricing-subtitle">Todo lo necesario para que ATLAS esté operativo. El precio varía según el número de plataformas y la complejidad de la integración.</div>
       <ul class="pricing-features">
         <li>Conexión de plataformas publicitarias</li>
         <li>Configuración de KPIs y umbrales</li>
@@ -300,7 +398,7 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
     <div class="pricing-card featured">
       <div class="pricing-type">Fee mensual · Sin permanencia</div>
       <div class="pricing-title">SERVICIO CONTINUO</div>
-      <div class="pricing-subtitle">ATLAS funcionando 24/7, con todas las actualizaciones incluidas. La mensualidad depende de la complejidad del agente y el volumen de datos procesados.</div>
+      <div class="pricing-subtitle">ATLAS funcionando 24/7 con todas las actualizaciones incluidas. La mensualidad depende de la complejidad del agente y el volumen de datos procesados.</div>
       <ul class="pricing-features">
         <li>Briefing diario automático</li>
         <li>Informe semanal PDF</li>
@@ -314,11 +412,12 @@ footer { background: var(--carbon); border-top: 1px solid var(--borde); padding:
   </div>
 </section>
 
+<!-- CTA -->
 <section class="cta-section">
   <div class="cta-bg-text">ATLAS</div>
   <div class="cta-eyebrow">¿Listo para activarlo?</div>
   <h2 class="cta-title">TU PAID MEDIA<br>NO DUERME.<br><em>ATLAS tampoco.</em></h2>
-  <p class="cta-sub">Cuéntanos qué plataformas usas y en menos de 24 horas te preparamos una propuesta con datos reales de tu cuenta.</p>
+  <p class="cta-sub">Cuéntanos qué plataformas usas y te preparamos una propuesta con datos reales de tu cuenta.</p>
   <div class="cta-buttons">
     <a href="mailto:nico@looplystudios.io?subject=Quiero saber más sobre ATLAS" class="btn-primary">Hablar con Looplystudios</a>
     <a href="/" class="btn-ghost">Ver más productos</a>

@@ -346,7 +346,6 @@ section { padding: 120px 60px; }
 }
 .products-note { font-size: 11px; line-height: 1.7; color: var(--dim); max-width: 280px; text-align: right; }
 
-/* Grid 2 columnas: CEREBRO grande a la izquierda, columna derecha con ATLAS + fila inferior MAX+VITA */
 .products-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -377,25 +376,21 @@ section { padding: 120px 60px; }
 .product-card:hover { border-color: var(--borde-gold); transform: translateY(-4px); }
 .product-card:hover::before { transform: scaleX(1); }
 
-/* CEREBRO ocupa las dos filas de la columna izquierda */
 .product-card--cerebro {
   grid-column: 1;
   grid-row: 1 / 3;
 }
 
-/* ATLAS ocupa la primera fila de la columna derecha */
 .product-card--atlas {
   grid-column: 2;
   grid-row: 1;
 }
 
-/* MAX y VITA van en la segunda fila, dividida en dos */
 .product-card--bottom {
   grid-column: span 1;
   grid-row: 2;
 }
 
-/* Subgrid para MAX y VITA dentro de la celda inferior derecha */
 .products-bottom-row {
   grid-column: 2;
   grid-row: 2;
@@ -416,7 +411,6 @@ section { padding: 120px 60px; }
 .product-number--small { font-size: 52px; top: 24px; right: 24px; }
 .product-card:hover .product-number { color: rgba(201,170,112,0.12); }
 
-/* Badge NUEVO en ATLAS */
 .product-badge {
   display: inline-block;
   font-size: 8px;
@@ -476,8 +470,7 @@ section { padding: 120px 60px; }
   text-decoration: none;
   transition: all 0.25s;
   font-weight: 500;
-  border: none;
-  cursor: pointer;
+  display: inline-block;
 }
 .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
 
@@ -491,119 +484,9 @@ section { padding: 120px 60px; }
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.25s;
+  display: inline-block;
 }
 .btn-ghost:hover { background: rgba(201,170,112,0.06); transform: translateY(-2px); }
-
-/* MODAL */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  backdrop-filter: blur(4px);
-}
-
-.modal.active {
-  display: flex;
-}
-
-.modal-content {
-  background: var(--grafito);
-  padding: 48px;
-  border-radius: 8px;
-  max-width: 420px;
-  width: 90%;
-  border: 1px solid var(--borde-gold);
-  position: relative;
-}
-
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: var(--accent);
-  font-size: 32px;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.modal-close:hover {
-  color: var(--accent2);
-}
-
-.modal-content h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 32px;
-  color: var(--hueso);
-  margin-bottom: 24px;
-  letter-spacing: 2px;
-}
-
-.modal-content form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.modal-content input,
-.modal-content textarea {
-  width: 100%;
-  padding: 12px 16px;
-  background: var(--negro);
-  border: 1px solid var(--borde);
-  color: var(--texto);
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  border-radius: 4px;
-  transition: border-color 0.2s;
-}
-
-.modal-content input::placeholder,
-.modal-content textarea::placeholder {
-  color: var(--dim);
-}
-
-.modal-content input:focus,
-.modal-content textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: rgba(201,170,112,0.02);
-}
-
-.modal-content textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-.modal-content button[type="submit"] {
-  width: 100%;
-  padding: 14px;
-  background: var(--accent);
-  color: var(--negro);
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  border-radius: 4px;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: all 0.25s;
-  margin-top: 8px;
-}
-
-.modal-content button[type="submit"]:hover {
-  background: var(--accent2);
-  transform: translateY(-2px);
-}
 
 footer {
   background: var(--carbon);
@@ -640,7 +523,6 @@ footer {
   .products-header { flex-direction: column; align-items: flex-start; gap: 16px; }
   .products-note { text-align: left; }
   .nav-links { display: none; }
-  .modal-content { width: 95%; padding: 40px 32px; }
 }
 </style>
 </head>
@@ -656,7 +538,7 @@ footer {
     <li><a href="#productos">Productos</a></li>
     <li><a href="#casos">Casos</a></li>
   </ul>
-  <a href="#" onclick="openContactModal(); return false;" class="nav-cta">Contactar</a>
+  <a href="mailto:hola@looplystudios.io" class="nav-cta">Contactar</a>
 </nav>
 
 <section class="hero">
@@ -747,7 +629,6 @@ footer {
 
   <div class="products-grid reveal">
 
-    <!-- CEREBRO — columna izquierda, ocupa las dos filas -->
     <a href="https://api.looplystudios.io" class="product-card product-card--cerebro" target="_blank">
       <div class="product-number">01</div>
       <div class="product-tag">Motor conversacional IA</div>
@@ -756,7 +637,6 @@ footer {
       <div class="product-link">Ver demo</div>
     </a>
 
-    <!-- ATLAS — columna derecha, primera fila -->
     <a href="atlas.html" class="product-card product-card--atlas">
       <div class="product-number">02</div>
       <div class="product-badge">Nuevo</div>
@@ -766,7 +646,6 @@ footer {
       <div class="product-link">Descubrir ATLAS</div>
     </a>
 
-    <!-- MAX y VITA — columna derecha, segunda fila, dividida en dos -->
     <div class="products-bottom-row">
       <div class="product-card">
         <div class="product-number product-number--small">03</div>
@@ -831,24 +710,10 @@ footer {
   <h2 class="cta-title">TU <em>negocio.</em><br>NUESTRA<br>INTELIGENCIA.</h2>
   <p class="cta-sub">Cuéntanos qué proceso quieres automatizar, qué sistema necesitas o qué problema llevas tiempo sin resolver. Lo analizamos y te proponemos una solución a medida.</p>
   <div class="cta-buttons">
-    <button onclick="openContactModal()" class="btn-primary">Hablemos</button>
+    <a href="mailto:hola@looplystudios.io" class="btn-primary">Hablemos</a>
     <a href="https://api.looplystudios.io" class="btn-ghost" target="_blank">Ver CEREBRO</a>
   </div>
 </section>
-
-<!-- MODAL DE CONTACTO -->
-<div class="modal" id="contactModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeContactModal()">&times;</button>
-    <h3>Hablemos</h3>
-    <form action="https://formspree.io/f/xpzgkwvd" method="POST">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu email" required>
-      <textarea name="mensaje" placeholder="¿Qué necesitas?" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
-</div>
 
 <footer>
   <div class="footer-logo">LOOPLY<span>.</span></div>
@@ -911,29 +776,6 @@ window.addEventListener('scroll', () => {
   const y = window.scrollY;
   document.querySelector('.hero-orb').style.transform = `translate(-50%, calc(-50% + ${y * 0.3}px))`;
   document.querySelector('.hero-grid').style.opacity = 1 - y / 600;
-});
-
-// MODAL FUNCTIONS
-function openContactModal() {
-  document.getElementById('contactModal').classList.add('active');
-}
-
-function closeContactModal() {
-  document.getElementById('contactModal').classList.remove('active');
-}
-
-// Cerrar modal al hacer click fuera
-document.getElementById('contactModal').addEventListener('click', (e) => {
-  if (e.target.id === 'contactModal') {
-    closeContactModal();
-  }
-});
-
-// Cerrar modal con ESC
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeContactModal();
-  }
 });
 </script>
 </body>

@@ -689,9 +689,30 @@ footer {
   .hero { padding-bottom: 60px; min-height: 100svh; }
   .hero-title { font-size: 64px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .products-grid { grid-template-columns: 1fr; }
-  .product-card--cerebro { grid-row: auto; }
-  .products-bottom-row { grid-template-columns: 1fr; }
+  /* FIX PRODUCTOS MOBILE */
+  .products-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .product-card--cerebro {
+    grid-column: unset;
+    grid-row: unset;
+    order: 1;
+  }
+  .product-card--atlas {
+    grid-column: unset;
+    grid-row: unset;
+    order: 2;
+  }
+  .products-bottom-row {
+    grid-column: unset;
+    grid-row: unset;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    order: 3;
+  }
   .como-flow { grid-template-columns: 1fr 1fr; }
   .como-arrow { display: none; }
   .como-demo { grid-template-columns: 1fr; }
@@ -704,6 +725,9 @@ footer {
   .products-note { text-align: left; }
   .nav-links { display: none; }
   .cta-buttons { flex-direction: column; align-items: center; }
+  footer { padding: 40px 24px; }
+  .product-card { padding: 32px 24px; }
+  .case-card { padding: 36px 28px; }
 }
 </style>
 </head>

@@ -1,0 +1,30 @@
+# Looplystudios
+
+> Agencia de inteligencia artificial en Madrid especializada en agentes IA
+> conversacionales, automatizacion de procesos y software a medida para
+> empresas en Espana y Latinoamerica.
+
+## Productos
+
+- [CEREBRO](https://looplystudios.io/#productos): motor de agentes IA conversacionales para WhatsApp. Cualifica leads, recomienda productos y cierra ventas sin intervencion humana. 800€ setup + 200€/mes por cliente.
+- [ATLAS](https://looplystudios.io/atlas.html): agente de inteligencia publicitaria. Monitoriza Google Ads, Meta Ads, GA4 y TikTok Ads en tiempo real, genera briefings diarios automaticos.
+- [PULSE](https://looplystudios.io/#productos): agente de estrategia de contenido para LinkedIn. Genera propuestas semanales, redacta posts y crea imagenes visuales.
+- [RADAR](https://looplystudios.io/#productos): modulo de optimizacion de contenido para SEO, GEO (motores de IA generativa) y AEO (motores de respuesta directa).
+- [MAX](https://looplystudios.io/#productos): secretario ejecutivo IA conectado a Gmail, Google Calendar y Sheets. Proximamente.
+
+## Casos de uso
+
+- [Boutique Destinations](https://looplystudios.io/#casos): agencia de viajes en Madrid. Transformacion digital completa con CEREBRO y ATLAS. Resultado: +40% en ventas, +40% en productividad del equipo.
+- [Microchips Academy](https://looplystudios.io/#casos): academia online de electronica para el mercado hispanohablante. Agente Alex por WhatsApp procesa 1.179 leads de Espana y Latinoamerica, 441 listos para campana.
+
+## Sobre la empresa
+
+Looplystudios LLC tiene sede en Madrid, Espana. Fundada por Nicolas Frances.
+No construye herramientas genericas ni plantillas: parte del problema real
+de cada empresa antes de escribir codigo.
+
+## Contacto
+
+Email: hola@looplystudios.io
+Web: https://looplystudios.io
+Formulario de contacto: https://looplystudios.io (boton "Contactar")

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentes IA por WhatsApp: qué son, cómo funcionan y un caso real | Looplystudios</title>
+<meta name="description" content="Un agente IA por WhatsApp gestiona conversaciones comerciales completas con lenguaje natural. Cómo funciona por dentro, y el caso real de Microchips Academy.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Looplystudios LLC">
+<link rel="canonical" href="https://looplystudios.io/blog/agentes-ia-whatsapp.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://looplystudios.io/blog/agentes-ia-whatsapp.html">
+<meta property="og:title" content="Agentes IA por WhatsApp: qué son, cómo funcionan y un caso real">
+<meta property="og:description" content="Un agente IA por WhatsApp gestiona conversaciones comerciales completas con lenguaje natural, no con menús de botones.">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Looplystudios">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agentes IA por WhatsApp: qué son, cómo funcionan y un caso real">
+<meta name="twitter:description" content="Un agente IA por WhatsApp gestiona conversaciones comerciales completas con lenguaje natural, no con menús de botones.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://looplystudios.io/blog/agentes-ia-whatsapp.html#article",
+      "headline": "Agentes IA por WhatsApp: qué son, cómo funcionan y un caso real",
+      "description": "Un agente IA por WhatsApp gestiona conversaciones comerciales completas con lenguaje natural, no con menús de botones.",
+      "author": {"@type": "Organization", "name": "Looplystudios LLC", "url": "https://looplystudios.io"},
+      "publisher": {"@type": "Organization", "name": "Looplystudios LLC", "logo": {"@type": "ImageObject", "url": "https://looplystudios.io/favicon.svg"}},
+      "datePublished": "2026-07-24",
+      "dateModified": "2026-07-24",
+      "mainEntityOfPage": "https://looplystudios.io/blog/agentes-ia-whatsapp.html",
+      "inLanguage": "es-ES"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://looplystudios.io/"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://looplystudios.io/blog/"},
+        {"@type": "ListItem", "position": 3, "name": "Agentes IA por WhatsApp", "item": "https://looplystudios.io/blog/agentes-ia-whatsapp.html"}
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --negro: #060606; --carbon: #0e0e0e; --grafito: #161616;
+  --hueso: #f2ede4; --accent: #c9aa70; --accent2: #e8c97a;
+  --texto: #c8c2b8; --dim: #8a8480; --borde: rgba(255,255,255,0.06);
+  --borde-gold: rgba(201,170,112,0.25); --verde: #4ade80;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--negro); color: var(--texto); font-family: 'DM Mono', monospace; line-height: 1.5; }
+
+nav {
+  padding: 28px 60px; display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--borde); position: sticky; top: 0; background: rgba(6,6,6,0.95);
+  backdrop-filter: blur(8px); z-index: 100;
+}
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 4px; color: var(--hueso); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-cta {
+  padding: 9px 22px; border: 1px solid var(--borde-gold); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent); background: none; cursor: pointer;
+  font-family: 'DM Mono', monospace; transition: all 0.25s;
+}
+.nav-cta:hover { background: var(--accent); color: var(--negro); }
+
+.article-header { padding: 60px 60px 40px; max-width: 800px; margin: 0 auto; }
+.breadcrumb { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+.breadcrumb a { color: var(--dim); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
+.article-header h1 {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 5vw, 56px);
+  color: var(--hueso); line-height: 1.05; margin-bottom: 20px;
+}
+.article-meta { font-size: 11px; color: var(--dim); letter-spacing: 1px; }
+
+article { max-width: 800px; margin: 0 auto; padding: 0 60px 100px; }
+article p { font-size: 15px; line-height: 1.85; color: var(--texto); margin-bottom: 24px; }
+article p strong { color: var(--hueso); font-weight: 500; }
+article h2 {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4vw, 38px);
+  color: var(--hueso); margin: 56px 0 24px; line-height: 1.1;
+}
+article ul, article ol { margin: 0 0 24px 0; padding-left: 0; list-style: none; }
+article ul li, article ol li {
+  font-size: 15px; color: var(--texto); padding: 12px 0 12px 28px; position: relative;
+  border-bottom: 1px solid var(--borde); counter-increment: item;
+}
+article ul li::before { content: '◆'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 16px; }
+article ol { counter-reset: item; }
+article ol li::before { content: counter(item); position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 12px; font-weight: 500; }
+article ol li { padding-left: 32px; }
+article a { color: var(--accent); }
+
+.faq-block { background: var(--grafito); border: 1px solid var(--borde); padding: 24px 28px; margin-bottom: 2px; }
+.faq-block h3 { font-size: 14px; color: var(--hueso); margin-bottom: 12px; font-weight: 500; }
+.faq-block p { font-size: 13px; color: var(--dim); margin-bottom: 0; }
+
+.article-cta {
+  background: var(--grafito); border: 1px solid var(--borde-gold); padding: 48px;
+  text-align: center; margin-top: 60px;
+}
+.article-cta h3 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--hueso); margin-bottom: 16px; }
+.article-cta p { font-size: 13px; color: var(--dim); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.btn-primary {
+  padding: 14px 36px; background: var(--accent); color: var(--negro); font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.25s;
+}
+.btn-primary:hover { background: var(--accent2); }
+
+footer { background: var(--carbon); border-top: 1px solid var(--borde); padding: 40px 60px; text-align: center; }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 4px; color: var(--hueso); margin-bottom: 12px; }
+.footer-logo span { color: var(--accent); }
+.footer-copy { font-size: 10px; color: var(--dim); }
+
+.contact-overlay { position: fixed; inset: 0; background: rgba(6,6,6,0.85); backdrop-filter: blur(4px); z-index: 500; display: none; align-items: center; justify-content: center; padding: 24px; }
+.contact-overlay.open { display: flex; }
+.contact-modal { background: var(--grafito); border: 1px solid var(--borde-gold); max-width: 480px; width: 100%; padding: 48px; position: relative; }
+.contact-close { position: absolute; top: 20px; right: 20px; font-size: 20px; color: var(--dim); cursor: pointer; background: none; border: none; }
+.contact-close:hover { color: var(--accent); }
+.contact-modal h3 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--hueso); margin-bottom: 24px; }
+.contact-field { margin-bottom: 16px; }
+.contact-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; display: block; }
+.contact-input { width: 100%; background: var(--negro); border: 1px solid var(--borde); color: var(--hueso); font-family: 'DM Mono', monospace; font-size: 13px; padding: 12px 16px; outline: none; }
+.contact-input:focus { border-color: var(--accent); }
+textarea.contact-input { resize: vertical; min-height: 90px; }
+.contact-submit { width: 100%; padding: 14px; background: var(--accent); color: var(--negro); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; margin-top: 8px; }
+.contact-status { font-size: 12px; margin-top: 14px; text-align: center; min-height: 18px; }
+.contact-status.success { color: var(--verde); }
+.contact-status.error { color: #e05a5a; }
+
+@media (max-width: 700px) {
+  nav, .article-header, article, footer { padding-left: 24px; padding-right: 24px; }
+  .contact-modal { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">LOOPLY<span>.</span></a>
+  <button onclick="openContactModal()" class="nav-cta">Contactar</button>
+</nav>
+
+<div class="article-header">
+  <div class="breadcrumb"><a href="/">Inicio</a> / <a href="/blog/">Blog</a> / Agentes IA</div>
+  <h1>Agentes IA por WhatsApp: qué son, cómo funcionan y un caso real</h1>
+  <div class="article-meta">Looplystudios · 24 julio 2026 · 6 min de lectura</div>
+</div>
+
+<article>
+  <p><strong>Un agente IA por WhatsApp es un sistema que gestiona conversaciones comerciales completas dentro de la app de mensajería más usada en España y Latinoamérica.</strong> A diferencia de un chatbot estándar de WhatsApp Business, no depende de menús de botones ni respuestas predefinidas: entiende lenguaje natural, recuerda el historial completo de la conversación y toma decisiones de cualificación o venta de forma autónoma.</p>
+
+  <h2>Qué diferencia a un agente IA de un chatbot de WhatsApp</h2>
+
+  <p>Un chatbot tradicional sigue un árbol de decisiones fijo: si el usuario escribe algo fuera del guion, el sistema no sabe qué hacer. Un agente IA por WhatsApp, en cambio, procesa lenguaje natural, consulta el historial completo de la conversación y adapta cada respuesta al contexto real del cliente. El resultado es una conversación que se siente humana, sin serlo.</p>
+
+  <ul>
+    <li><strong>Chatbot estándar:</strong> menús de botones, respuestas predefinidas, sin memoria de conversación.</li>
+    <li><strong>Agente IA:</strong> comprensión de lenguaje natural, historial persistente, decisiones autónomas de cualificación y venta.</li>
+  </ul>
+
+  <h2>Cómo funciona un agente IA por WhatsApp por dentro</h2>
+
+  <p>El funcionamiento técnico combina varias piezas que trabajan en milisegundos. Primero, la plataforma de mensajería —normalmente vía WhatsApp Business API a través de proveedores como ManyChat— recibe el mensaje entrante y lo envía al motor de IA. El motor procesa el texto con un modelo de lenguaje, consulta el historial guardado en base de datos y genera una respuesta que tiene en cuenta todo lo que se dijo antes y el conocimiento específico del negocio: catálogo de productos, políticas de precio, información de la empresa.</p>
+
+  <p>En términos técnicos, una implementación típica incluye:</p>
+
+  <ol>
+    <li>Recepción del mensaje vía <strong>WhatsApp Business API</strong>.</li>
+    <li>Envío al <strong>motor de IA</strong> (modelo de lenguaje grande como Claude o GPT).</li>
+    <li>Consulta del <strong>historial de conversación</strong> almacenado en base de datos.</li>
+    <li>Acceso a la <strong>base de conocimiento del negocio</strong> (catálogo, precios, FAQs).</li>
+    <li>Generación y envío de la <strong>respuesta personalizada</strong> al usuario.</li>
+  </ol>
+
+  <h2>Por qué WhatsApp es el canal ideal para colocar un agente IA</h2>
+
+  <p><strong>Los mensajes de WhatsApp se abren en más del 90% de los casos</strong>, frente a tasas de apertura de email que raramente superan el 30%. Esta diferencia convierte al canal en el lugar más eficiente para cualificar leads: llegan más personas, responden más rápido y el agente puede atenderlas todas sin importar el volumen ni la hora del día.</p>
+
+  <p>Esto es especialmente relevante en España y Latinoamérica, donde WhatsApp es la aplicación de mensajería dominante y los usuarios ya están habituados a comunicarse con marcas a través de ella.</p>
+
+  <h2>Cómo cualifica y cierra ventas un agente IA en WhatsApp</h2>
+
+  <p>El flujo habitual empieza cuando un lead llega desde un formulario web o un anuncio de Meta y recibe automáticamente un mensaje de bienvenida por WhatsApp. Cuando responde, el agente toma el control: hace las preguntas necesarias para entender qué necesita, consulta el catálogo o servicio disponible y recomienda la opción que mejor encaja. Si el lead está listo para comprar, puede cerrar la venta directamente o derivar a un comercial humano con todo el contexto ya recopilado.</p>
+
+  <p>Este proceso elimina el tiempo muerto entre la captación y el primer contacto cualificado, que en muchos sectores es donde se pierden más oportunidades.</p>
+
+  <h2>Caso real: Microchips Academy y el agente Alex</h2>
+
+  <p><strong>Microchips Academy, una academia online de electrónica con presencia en España y Latinoamérica, implementó un agente IA por WhatsApp llamado Alex.</strong> Los resultados fueron medibles desde el primer mes:</p>
+
+  <ul>
+    <li><strong>1.179 leads procesados</strong> de forma completamente autónoma.</li>
+    <li><strong>441 leads identificados</strong> como listos para campaña comercial.</li>
+    <li><strong>Tiempo de respuesta inferior a 5 segundos</strong> en cada interacción.</li>
+    <li><strong>Disponibilidad 24 horas al día</strong>, sin intervención humana.</li>
+  </ul>
+
+  <p>El agente Alex gestionó el 100% de las conversaciones entrantes sin colapsar al equipo humano, permitiendo que los comerciales se concentraran únicamente en los leads ya cualificados.</p>
+
+  <h2>¿Para qué tipo de negocio tiene sentido un agente IA por WhatsApp?</h2>
+
+  <p>Tiene más sentido cuanto mayor sea el volumen de leads entrantes y cuanto más repetitivo sea el proceso de cualificación inicial. Academias online, agencias de viajes, clínicas, inmobiliarias, tiendas con catálogo amplio o cualquier negocio que reciba consultas repetitivas son candidatos naturales.</p>
+
+  <p>En Looplystudios construimos CEREBRO, nuestro motor de agentes IA conversacionales para WhatsApp, partiendo siempre del problema real de cada empresa antes de escribir una sola línea de código.</p>
+
+  <div class="article-cta">
+    <h3>¿Quieres un agente IA en WhatsApp para tu empresa?</h3>
+    <p>Analizamos tu proceso real de ventas o soporte y te proponemos una solución a medida.</p>
+    <button onclick="openContactModal()" class="btn-primary">Hablemos</button>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">LOOPLY<span>.</span></div>
+  <div class="footer-copy">© 2026 Looplystudios LLC — Madrid, España</div>
+</footer>
+
+<div class="contact-overlay" id="contactOverlay">
+  <div class="contact-modal">
+    <button class="contact-close" onclick="closeContactModal()">✕</button>
+    <h3>Cuéntanos tu problema</h3>
+    <form id="contactForm" onsubmit="submitContactForm(event)">
+      <div class="contact-field">
+        <label class="contact-label">Nombre</label>
+        <input type="text" id="contactName" class="contact-input" required>
+      </div>
+      <div class="contact-field">
+        <label class="contact-label">Email</label>
+        <input type="email" id="contactEmail" class="contact-input" required>
+      </div>
+      <div class="contact-field">
+        <label class="contact-label">¿Qué necesitas?</label>
+        <textarea id="contactMessage" class="contact-input" required></textarea>
+      </div>
+      <button type="submit" class="contact-submit" id="contactSubmitBtn">Enviar mensaje</button>
+      <div class="contact-status" id="contactStatus"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+function openContactModal() { document.getElementById('contactOverlay').classList.add('open'); }
+function closeContactModal() { document.getElementById('contactOverlay').classList.remove('open'); }
+document.getElementById('contactOverlay').addEventListener('click', (e) => { if (e.target.id === 'contactOverlay') closeContactModal(); });
+
+async function submitContactForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('contactSubmitBtn');
+  const status = document.getElementById('contactStatus');
+  const name = document.getElementById('contactName').value.trim();
+  const email = document.getElementById('contactEmail').value.trim();
+  const message = document.getElementById('contactMessage').value.trim();
+  btn.disabled = true; btn.textContent = 'Enviando...'; status.textContent = ''; status.className = 'contact-status';
+  try {
+    const r = await fetch('https://api.looplystudios.io/api/web-contact', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({name, email, message})
+    });
+    const data = await r.json();
+    if (data.success) {
+      status.textContent = '✓ Mensaje enviado. Te contactaremos pronto.';
+      status.className = 'contact-status success';
+      document.getElementById('contactForm').reset();
+      setTimeout(closeContactModal, 2500);
+    } else { throw new Error(data.error || 'Error al enviar'); }
+  } catch (err) {
+    status.textContent = '✗ Error al enviar. Escríbenos a hola@looplystudios.io';
+    status.className = 'contact-status error';
+  } finally { btn.disabled = false; btn.textContent = 'Enviar mensaje'; }
+}
+</script>
+
+</body>
+</html>

@@ -12,6 +12,11 @@
 - [RADAR](https://looplystudios.io/#productos): modulo de optimizacion de contenido para SEO, GEO (motores de IA generativa) y AEO (motores de respuesta directa).
 - [MAX](https://looplystudios.io/#productos): secretario ejecutivo IA conectado a Gmail, Google Calendar y Sheets. Proximamente.
 
+## Blog
+
+- [Agentes IA por WhatsApp](https://looplystudios.io/blog/agentes-ia-whatsapp.html): como funciona un agente IA por WhatsApp por dentro, con el caso real de Microchips Academy (1.179 leads procesados).
+- [Qué es un agente IA](https://looplystudios.io/blog/que-es-un-agente-ia.html): explica la diferencia entre un agente IA y un chatbot tradicional, con comparativa y casos reales.
+
 ## Casos de uso
 
 - [Boutique Destinations](https://looplystudios.io/#casos): agencia de viajes en Madrid. Transformacion digital completa con CEREBRO y ATLAS. Resultado: +40% en ventas, +40% en productividad del equipo.
